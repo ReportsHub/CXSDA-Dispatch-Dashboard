@@ -504,6 +504,7 @@ tbody td:nth-child(35){
 }
 
 .modal-content{
+    position:relative;
     background:white;
     width:98%;
     max-width:1400px;
@@ -517,10 +518,13 @@ tbody td:nth-child(35){
 }
 
 .close-btn{
-    float:right;
+    position:absolute;
+    top:12px;
+    right:15px;
     cursor:pointer;
-    font-size:28px;
+    font-size:32px;
     font-weight:bold;
+    z-index:99999;
 }
 
 .close-btn:hover{
@@ -620,18 +624,18 @@ tbody td:nth-child(35){
 ========================================== */
 
 .tech-details{
-    min-width:1200px;
+    min-width:1600px;
 }
 
 .tech-details th:nth-child(1),
 .tech-details td:nth-child(1){
-    width:110px;
+    width:120px;
 }
 
 /* E.AGE */
 .tech-details th:nth-child(2),
 .tech-details td:nth-child(2){
-    width:70px;
+    width:80px;
     text-align:center;
 }
 
@@ -652,21 +656,21 @@ tbody td:nth-child(35){
 /* CUSTOMER NAME */
 .tech-details th:nth-child(5),
 .tech-details td:nth-child(5){
-    width:220px;
+    width:300px;
     text-align:left;
 }
 
 /* CUSTOMER ADDRESS */
 .tech-details th:nth-child(6),
 .tech-details td:nth-child(6){
-    width:500px;
+    width:700px;
     text-align:left;
 }
 
 /* ACCOUNT NUMBER */
 .tech-details th:nth-child(7),
 .tech-details td:nth-child(7){
-    width:140px;
+    width:180px;
     text-align:center;
 }
 
