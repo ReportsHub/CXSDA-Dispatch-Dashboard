@@ -28,39 +28,36 @@
         <option value="ALL">All Clusters</option>
     </select>
 
-    <div id="ageFilterGroup" class="age-filter">
-        <label>
-            <input type="checkbox" value="0 D">
-            0 D
-        </label>
-        <label>
-            <input type="checkbox" value="1 D">
-            1 D
-        </label>
-        <label>
-            <input type="checkbox" value="2 D">
-            2 D
-        </label>
-        <label>
-            <input type="checkbox" value="3 D">
-            3 D
-        </label>
-        <label>
-            <input type="checkbox" value="4-7 D">
-            4-7 D
-        </label>
-        <label>
-            <input type="checkbox" value="8-15 D">
-            8-15 D
-        </label>
-        <label>
-            <input type="checkbox" value="16-30 D">
-            16-30 D
-        </label>
-        <label>
-            <input type="checkbox" value=">30 D">
-            >30 D
-        </label>
+    <div class="age-dropdown">
+        <button
+            type="button"
+            id="ageDropdownBtn"
+            class="filter-btn"
+        >
+            Aging ▼
+        </button>
+        <div id="ageFilterGroup" class="age-dropdown-content">
+            <label>
+                <input type="checkbox" value="0 D">
+                0 D
+            </label>
+            <label>
+                <input type="checkbox" value="1 D">
+                1 D
+            </label>
+            <label>
+                <input type="checkbox" value="2 D">
+                2 D
+            </label>
+            <label>
+                <input type="checkbox" value="3 D">
+                3 D
+            </label>
+            <label>
+                <input type="checkbox" value="4-7 D">
+                4-7 D
+            </label>
+        </div>
     </div>
     
     <select id="lastMileFilter">
