@@ -188,7 +188,11 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
     function showDrillDown(title, records, showCXName = false){
-
+        const tableClass =
+        showCXName
+            ? "cluster-details"
+            : "tech-details";
+        
         let html = `
             <h3 style="margin-bottom:10px;">
                 ${title}
@@ -198,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${records.length}
             </p>
     
-            <table>
+            <table class="${tableClass}">
     
                 <thead>
                     <tr>
