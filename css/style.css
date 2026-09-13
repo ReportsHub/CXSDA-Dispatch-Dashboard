@@ -505,10 +505,11 @@ tbody td:nth-child(35){
 
 .modal-content{
     background:white;
-    width:90%;
-    max-width:1200px;
+    width:95%;
+    max-width:1400px;
     max-height:85vh;
-    overflow:auto;
+    overflow-y:auto;
+    overflow-x:auto;
     margin:40px auto;
     padding:20px;
     border-radius:8px;
@@ -551,4 +552,28 @@ tbody td:nth-child(35){
     max-width:300px;
     word-wrap:break-word;
     white-space:normal;
+}
+
+.modal-content table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+.modal-content td{
+    white-space:normal;
+    word-break:break-word;
+    vertical-align:top;
+}
+
+.modal-content th:nth-child(6),
+.modal-content td:nth-child(6){
+    width:350px;
+    text-align:left;
+}
+
+.modal-content th:nth-child(5),
+.modal-content td:nth-child(5){
+    width:220px;
+    text-align:left;
 }
