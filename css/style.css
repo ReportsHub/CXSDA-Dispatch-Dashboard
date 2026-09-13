@@ -54,20 +54,16 @@ body{
     flex-wrap:wrap;
     align-items:flex-start;
     gap:12px;
-
     padding:15px 20px;
-
     background:white;
-
     border-bottom:1px solid #d9d9d9;
 
-
     position:sticky;
-
     top:64px;
 
-    z-index:999;
+    z-index:100000;
 
+    overflow:visible;
 }
 
 
@@ -698,9 +694,6 @@ tbody td:nth-child(35){
 .age-dropdown{
     position:relative;
     min-width:180px;
-}
-
-.age-dropdown{
     z-index:100001;
 }
 
@@ -731,24 +724,27 @@ tbody td:nth-child(35){
 /* Dropdown panel */
 
 .age-dropdown-content{
+
     display:none;
+    overflow:hidden;
     position:absolute;
+
     top:100%;
     left:0;
 
-    width:180px;
+    width:220px;
 
-    background:#ffffff;
+    background:white;
+
     border:1px solid #d9d9d9;
+
     border-radius:6px;
 
     padding:8px;
 
-    box-shadow:0 8px 16px rgba(0,0,0,.20);
+    z-index:100002;
 
-    z-index:100000;
-
-    overflow:hidden;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
 }
 
 .age-dropdown-content.show{
@@ -760,17 +756,11 @@ tbody td:nth-child(35){
 .age-dropdown-content label{
     display:flex;
     align-items:center;
-    justify-content:flex-start;
-
-    gap:10px;
+    gap:8px;
 
     width:100%;
 
-    padding:6px 8px;
-
-    font-size:14px;
-
-    cursor:pointer;
+    margin:0;
 
     white-space:nowrap;
 }
