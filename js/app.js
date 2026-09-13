@@ -783,15 +783,16 @@ document.addEventListener("DOMContentLoaded", () => {
     lastMileFilter.addEventListener("change", buildTable);
 
     clearButton.addEventListener("click", () => {
-
+    
         searchBox.value = "";
         clusterFilter.value = "ALL";
-        statusFilter.value = "ALL";
         ageFilter.value = "ALL";
         lastMileFilter.value = "ALL";
-
+    
+        statusFilter.value = "DISPATCHED";
+    
         buildTable();
-
+    
     });
 
 });
