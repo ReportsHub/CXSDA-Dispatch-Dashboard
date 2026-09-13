@@ -161,7 +161,8 @@ body{
 
 
 table{
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     width: max-content;
     min-width:2200px;
 }
