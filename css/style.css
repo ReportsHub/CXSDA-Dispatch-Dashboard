@@ -236,8 +236,8 @@ thead tr:nth-child(1) th:not(.corner){
 /* Row 2 */
 thead tr:nth-child(2) th{
     position:sticky;
-    top:340px;
-    z-index:90;
+    top:30px;
+    z-index:10;
     background:#efe7c5;
 }
 
@@ -245,7 +245,7 @@ thead tr:nth-child(2) th{
 thead tr:nth-child(3) th{
     position:sticky;
     top:60px;
-    z-index:80;
+    z-index:5;
     background:#efe7c5;
 }
 
@@ -268,7 +268,7 @@ thead th.corner{
     position:sticky;
     top:0;
     left:0;
-    z-index:1000;
+    z-index:99999;
     background:#efe7c5;
     min-width:220px;
     width:220px;
