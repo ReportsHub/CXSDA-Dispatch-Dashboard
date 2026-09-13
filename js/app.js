@@ -376,68 +376,112 @@ document.addEventListener("DOMContentLoaded", () => {
             <td class="first-col">${cluster}</td>
             
             <!-- DISPATCHED -->
+            ${createDrillCell(clusterDispatched.NC,"DISPATCHED","NC")}
+            ${createDrillCell(clusterDispatched.AO,"DISPATCHED","A/O")}
+            ${createDrillCell(clusterDispatched.IPTV,"DISPATCHED","IPTV")}
+            ${createDrillCell(clusterDispatched.NWUP,"DISPATCHED","NWUP")}
+            ${createDrillCell(clusterDispatched.RELOC,"DISPATCHED","RELOC")}
+            ${createDrillCell(clusterDispatched.AS,"DISPATCHED","AS")}
             
-            <td>${showValue(clusterDispatched.NC)}</td>
-            <td>${showValue(clusterDispatched.AO)}</td>
-            <td>${showValue(clusterDispatched.IPTV)}</td>
-            <td>${showValue(clusterDispatched.NWUP)}</td>
-            <td>${showValue(clusterDispatched.RELOC)}</td>
-            <td>${showValue(clusterDispatched.AS)}</td>
-            
-            <td>${showValue(clusterDispatched.WAR0)}</td>
-            <td>${showValue(clusterDispatched.WAR1)}</td>
-            <td>${showValue(clusterDispatched.WAR2)}</td>
-            <td>${showValue(clusterDispatched.WAR3)}</td>
-            <td>${showValue(clusterDispatched.WAR47)}</td>
+            ${createDrillCell(clusterDispatched.WAR0,"DISPATCHED","WAR","0 D")}
+            ${createDrillCell(clusterDispatched.WAR1,"DISPATCHED","WAR","1 D")}
+            ${createDrillCell(clusterDispatched.WAR2,"DISPATCHED","WAR","2 D")}
+            ${createDrillCell(clusterDispatched.WAR3,"DISPATCHED","WAR","3 D")}
+            ${createDrillCell(clusterDispatched.WAR47,"DISPATCHED","WAR","4-7 D")}
             
             <!-- COMPLETED -->
+            ${createDrillCell(clusterCompleted.NC,"COMPLETED","NC")}
+            ${createDrillCell(clusterCompleted.AO,"COMPLETED","A/O")}
+            ${createDrillCell(clusterCompleted.IPTV,"COMPLETED","IPTV")}
+            ${createDrillCell(clusterCompleted.NWUP,"COMPLETED","NWUP")}
+            ${createDrillCell(clusterCompleted.RELOC,"COMPLETED","RELOC")}
+            ${createDrillCell(clusterCompleted.AS,"COMPLETED","AS")}
             
-            <td>${showValue(clusterCompleted.NC)}</td>
-            <td>${showValue(clusterCompleted.AO)}</td>
-            <td>${showValue(clusterCompleted.IPTV)}</td>
-            <td>${showValue(clusterCompleted.NWUP)}</td>
-            <td>${showValue(clusterCompleted.RELOC)}</td>
-            <td>${showValue(clusterCompleted.AS)}</td>
-            
-            <td>${showValue(clusterCompleted.WAR0)}</td>
+            ${createDrillCell(clusterCompleted.WAR0,"COMPLETED","WAR","0 D")}
             ${createDrillCell(clusterCompleted.WAR1,"COMPLETED","WAR","1 D")}
-            <td>${showValue(clusterCompleted.WAR2)}</td>
-            <td>${showValue(clusterCompleted.WAR3)}</td>
-            <td>${showValue(clusterCompleted.WAR47)}</td>
+            ${createDrillCell(clusterCompleted.WAR2,"COMPLETED","WAR","2 D")}
+            ${createDrillCell(clusterCompleted.WAR3,"COMPLETED","WAR","3 D")}
+            ${createDrillCell(clusterCompleted.WAR47,"COMPLETED","WAR","4-7 D")}
             
             <!-- HANDLED -->
+            ${createDrillCell(clusterHandled.NC,"HANDLED","NC")}
+            ${createDrillCell(clusterHandled.AO,"HANDLED","A/O")}
+            ${createDrillCell(clusterHandled.IPTV,"HANDLED","IPTV")}
+            ${createDrillCell(clusterHandled.NWUP,"HANDLED","NWUP")}
+            ${createDrillCell(clusterHandled.RELOC,"HANDLED","RELOC")}
+            ${createDrillCell(clusterHandled.AS,"HANDLED","AS")}
             
-            <td>${showValue(clusterHandled.NC)}</td>
-            <td>${showValue(clusterHandled.AO)}</td>
-            <td>${showValue(clusterHandled.IPTV)}</td>
-            <td>${showValue(clusterHandled.NWUP)}</td>
-            <td>${showValue(clusterHandled.RELOC)}</td>
-            <td>${showValue(clusterHandled.AS)}</td>
-            
-            <td>${showValue(clusterHandled.WAR0)}</td>
-            <td>${showValue(clusterHandled.WAR1)}</td>
-            <td>${showValue(clusterHandled.WAR2)}</td>
-            <td>${showValue(clusterHandled.WAR3)}</td>
-            <td>${showValue(clusterHandled.WAR47)}</td>
+            ${createDrillCell(clusterHandled.WAR0,"HANDLED","WAR","0 D")}
+            ${createDrillCell(clusterHandled.WAR1,"HANDLED","WAR","1 D")}
+            ${createDrillCell(clusterHandled.WAR2,"HANDLED","WAR","2 D")}
+            ${createDrillCell(clusterHandled.WAR3,"HANDLED","WAR","3 D")}
+            ${createDrillCell(clusterHandled.WAR47,"HANDLED","WAR","4-7 D")}
             
             <!-- UNHANDLED -->
+            ${createDrillCell(clusterUnhandled.NC,"PENDING/UNHANDLED","NC")}
+            ${createDrillCell(clusterUnhandled.AO,"PENDING/UNHANDLED","A/O")}
+            ${createDrillCell(clusterUnhandled.IPTV,"PENDING/UNHANDLED","IPTV")}
+            ${createDrillCell(clusterUnhandled.NWUP,"PENDING/UNHANDLED","NWUP")}
+            ${createDrillCell(clusterUnhandled.RELOC,"PENDING/UNHANDLED","RELOC")}
+            ${createDrillCell(clusterUnhandled.AS,"PENDING/UNHANDLED","AS")}
             
-            <td>${showValue(clusterUnhandled.NC)}</td>
-            <td>${showValue(clusterUnhandled.AO)}</td>
-            <td>${showValue(clusterUnhandled.IPTV)}</td>
-            <td>${showValue(clusterUnhandled.NWUP)}</td>
-            <td>${showValue(clusterUnhandled.RELOC)}</td>
-            <td>${showValue(clusterUnhandled.AS)}</td>
-            
-            <td>${showValue(clusterUnhandled.WAR0)}</td>
-            <td>${showValue(clusterUnhandled.WAR1)}</td>
-            <td>${showValue(clusterUnhandled.WAR2)}</td>
-            <td>${showValue(clusterUnhandled.WAR3)}</td>
-            <td>${showValue(clusterUnhandled.WAR47)}</td>
-            
+            ${createDrillCell(clusterUnhandled.WAR0,"PENDING/UNHANDLED","WAR","0 D")}
+            ${createDrillCell(clusterUnhandled.WAR1,"PENDING/UNHANDLED","WAR","1 D")}
+            ${createDrillCell(clusterUnhandled.WAR2,"PENDING/UNHANDLED","WAR","2 D")}
+            ${createDrillCell(clusterUnhandled.WAR3,"PENDING/UNHANDLED","WAR","3 D")}
+            ${createDrillCell(clusterUnhandled.WAR47,"PENDING/UNHANDLED","WAR","4-7 D")}
             `;
 
             tbody.appendChild(clusterRow);
+
+            const clusterDrillCells =
+                clusterRow.querySelectorAll(".drilldown");
+            
+            clusterDrillCells.forEach(cell => {
+            
+                cell.addEventListener("dblclick", () => {
+            
+                    const status =
+                        cell.dataset.status;
+            
+                    const soType =
+                        cell.dataset.sotype;
+            
+                    const age =
+                        cell.dataset.age;
+            
+                    const records =
+                        clusterRecords.filter(r => {
+            
+                            const statusMatch =
+                                status === "DISPATCHED"
+                                    ? true
+                                    : (r["F.STAT"] || "").trim() === status;
+            
+                            const soTypeMatch =
+                                (r["SO TYPE"] || "").trim() === soType;
+            
+                            const ageMatch =
+                                soType !== "WAR"
+                                    ? true
+                                    : (r["E.AGE"] || "").trim() === age;
+            
+                            return (
+                                statusMatch &&
+                                soTypeMatch &&
+                                ageMatch
+                            );
+            
+                        });
+            
+                    showDrillDown(
+                        `${cluster} | ${status} | ${soType}${age ? " | " + age : ""}`,
+                        records
+                    );
+            
+                });
+            
+            });
 
             const clusterDrillCells =
                 clusterRow.querySelectorAll(".drilldown");
