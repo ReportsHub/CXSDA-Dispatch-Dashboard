@@ -145,6 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // BUILD TABLE
     // ==========================================
+    function showValue(value){
+        return value === 0 ? "" : value;
+    }
+    
     function buildTable(){
 
         tbody.innerHTML = "";
@@ -223,18 +227,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <!-- DISPATCHED -->
 
-                    <td>${dispatched.NC}</td>
-                    <td>${dispatched.AO}</td>
-                    <td>${dispatched.IPTV}</td>
-                    <td>${dispatched.NWUP}</td>
-                    <td>${dispatched.RELOC}</td>
-                    <td>${dispatched.AS}</td>
-
-                    <td>${dispatched.WAR0}</td>
-                    <td>${dispatched.WAR1}</td>
-                    <td>${dispatched.WAR2}</td>
-                    <td>${dispatched.WAR3}</td>
-                    <td>${dispatched.WAR47}</td>
+                    <td>${showValue(dispatched.NC)}</td>
+                    <td>${showValue(dispatched.AO)}</td>
+                    <td>${showValue(dispatched.IPTV)}</td>
+                    <td>${showValue(dispatched.NWUP)}</td>
+                    <td>${showValue(dispatched.RELOC)}</td>
+                    <td>${showValue(dispatched.AS)}</td>
+                    
+                    <td>${showValue(dispatched.WAR0)}</td>
+                    <td>${showValue(dispatched.WAR1)}</td>
+                    <td>${showValue(dispatched.WAR2)}</td>
+                    <td>${showValue(dispatched.WAR3)}</td>
+                    <td>${showValue(dispatched.WAR47)}</td>
 
                     <!-- COMPLETED -->
                     <td colspan="11"></td>
