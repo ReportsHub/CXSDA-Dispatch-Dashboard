@@ -453,6 +453,10 @@ document.addEventListener("DOMContentLoaded", () => {
             
             });
             
+            const clusterDispatched = getCounts(
+                clusterRecords
+            );
+            
             const clusterCompleted = getCounts(
                 clusterRecords.filter(r =>
                     (r["F.STAT"] || "").trim() === "COMPLETED"
@@ -599,18 +603,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 let techRecords = allData.filter(r =>
                     r[CX_NAME] === person[CX_NAME]
                 );
-
-                if(selectedAge !== "ALL"){
-                    techRecords = techRecords.filter(r =>
-                        (r["E.AGE"] || "").trim() === selectedAge
-                    );
-                }
-                
-                if(selectedLastMile !== "ALL"){
-                    techRecords = techRecords.filter(r =>
-                        (r["ACTIVITY"] || "").trim() === selectedLastMile
-                    );
-                }
 
                 if(techRecords.length === 0){
                     return false;
