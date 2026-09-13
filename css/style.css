@@ -487,3 +487,57 @@ tbody td:nth-child(24){
 tbody td:nth-child(35){
     border-left:4px solid #1f4e79;
 }
+
+/* ==========================================
+   DRILL DOWN MODAL
+========================================== */
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.45);
+}
+
+.modal-content{
+    background:white;
+    width:90%;
+    max-width:1200px;
+    max-height:85vh;
+    overflow:auto;
+    margin:40px auto;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+.close-btn{
+    float:right;
+    cursor:pointer;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.close-btn:hover{
+    color:red;
+}
+
+.modal-content table{
+    width:100%;
+    min-width:auto;
+}
+
+.modal-content th{
+    background:#1f4e79;
+    color:white;
+}
+
+.modal-content td,
+.modal-content th{
+    border:1px solid #ccc;
+    padding:6px;
+}
