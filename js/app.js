@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const tbody = document.getElementById("dispatchTable");
 
     const searchBox = document.getElementById("searchBox");
+    const ageFilter = document.getElementById("ageFilter");
+    const lastMileFilter = document.getElementById("lastMileFilter");
     const clusterFilter = document.getElementById("clusterFilter");
     const statusFilter = document.getElementById("statusFilter");
     const detailModal = document.getElementById("detailModal");
@@ -124,6 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Rows:", allData.length);
 
             populateClusterFilter();
+            populateAgeFilter();
+            populateLastMileFilter();
+            
             buildTable();
         },
 
@@ -137,6 +142,56 @@ document.addEventListener("DOMContentLoaded", () => {
     // POPULATE CLUSTER FILTER
     // ==========================================
     function populateClusterFilter(){
+
+        function populateAgeFilter(){
+
+        ageFilter.innerHTML =
+            '<option value="ALL">All Aging</option>';
+    
+        const ages = [...new Set(
+            allData.map(r => r["E.AGE"])
+        )]
+        .filter(Boolean)
+        .sort();
+    
+        ages.forEach(age => {
+    
+            const option =
+                document.createElement("option");
+    
+            option.value = age;
+            option.textContent = age;
+    
+            ageFilter.appendChild(option);
+    
+        });
+    
+    }
+    
+    function populateLastMileFilter(){
+    
+        lastMileFilter.innerHTML =
+            '<option value="ALL">All Last Mile</option>';
+    
+        const activities = [...new Set(
+            allData.map(r => r["ACTIVITY"])
+        )]
+        .filter(Boolean)
+        .sort();
+    
+        activities.forEach(activity => {
+    
+            const option =
+                document.createElement("option");
+    
+            option.value = activity;
+            option.textContent = activity;
+    
+            lastMileFilter.appendChild(option);
+    
+        });
+    
+    }
 
         clusterFilter.innerHTML =
             '<option value="ALL">All Clusters</option>';
@@ -273,6 +328,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const keyword = searchBox.value.trim().toLowerCase();
         const selectedCluster = clusterFilter.value;
+        const selectedAge = ageFilter.value;
+        const selectedLastMile = lastMileFilter.value;
 
         const clusters = clusterOrder.filter(cluster =>
             allData.some(r => r[CLUSTER] === cluster)
@@ -324,6 +381,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 const clusterMatch =
                     selectedCluster === "ALL" ||
                     cluster === selectedCluster;
+
+                const ageMatch =
+                    selectedAge === "ALL" ||
+                    techRecords.some(r =>
+                        (r["E.AGE"] || "").trim() === selectedAge
+                    );
+                
+                const lastMileMatch =
+                    selectedLastMile === "ALL" ||
+                    techRecords.some(r =>
+                        (r["ACTIVITY"] || "").trim() === selectedLastMile
+                    );
                 
                 const selectedStatus = statusFilter.value;
                 
@@ -345,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     statusMatch = true;
                 }
                 
-                return searchMatch && clusterMatch && statusMatch;
+                return searchMatch && clusterMatch && ageMatch && lastMileMatch && statusMatch;
 
             });
 
@@ -663,11 +732,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     statusFilter.addEventListener("change", buildTable);
 
+    ageFilter.addEventListener("change", buildTable);
+    
+    lastMileFilter.addEventListener("change", buildTable);
+
     clearButton.addEventListener("click", () => {
 
         searchBox.value = "";
         clusterFilter.value = "ALL";
         statusFilter.value = "ALL";
+        ageFilter.value = "ALL";
+        lastMileFilter.value = "ALL";
 
         buildTable();
 
