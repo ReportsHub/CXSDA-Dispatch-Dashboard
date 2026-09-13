@@ -350,8 +350,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
             technicians = technicians.filter(person => {
 
-                const techRecords = allData.filter(r =>
+                let techRecords = allData.filter(r =>
                     r[CX_NAME] === person[CX_NAME]
+                );
+                
+                if(selectedAge !== "ALL"){
+                    techRecords = techRecords.filter(r =>
+                        (r["E.AGE"] || "").trim() === selectedAge
+                    );
+                }
+                
+                if(selectedLastMile !== "ALL"){
+                    techRecords = techRecords.filter(r =>
+                        (r["ACTIVITY"] || "").trim() === selectedLastMile
+                    );
+                }
+                
+                if(techRecords.length === 0){
+                    return false;
+                }
+                
+                const dispatched = getCounts(
+                    techRecords
                 );
                 
                 const completed = getCounts(
@@ -384,9 +404,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 const selectedStatus = statusFilter.value;
                 
-                let statusMatch = true;
+                let statusMatch = false;
                 
-                if(selectedStatus === "COMPLETED"){
+                if(selectedStatus === "DISPATCHED"){
+                    statusMatch = getTotal(dispatched) > 0;
+                }
+                
+                else if(selectedStatus === "COMPLETED"){
                     statusMatch = getTotal(completed) > 0;
                 }
                 
@@ -396,10 +420,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 else if(selectedStatus === "UNHANDLED"){
                     statusMatch = getTotal(unhandled) > 0;
-                }
-                
-                else if(selectedStatus === "DISPATCHED"){
-                    statusMatch = true;
                 }
                 
                 return searchMatch && clusterMatch && statusMatch;
@@ -573,6 +593,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 let techRecords = allData.filter(r =>
                     r[CX_NAME] === person[CX_NAME]
                 );
+
+                if(selectedAge !== "ALL"){
+                    techRecords = techRecords.filter(r =>
+                        (r["E.AGE"] || "").trim() === selectedAge
+                    );
+                }
+                
+                if(selectedLastMile !== "ALL"){
+                    techRecords = techRecords.filter(r =>
+                        (r["ACTIVITY"] || "").trim() === selectedLastMile
+                    );
+                }
+
+                if(techRecords.length === 0){
+                    return false;
+                }
                 
                 if(selectedAge !== "ALL"){
                     techRecords = techRecords.filter(r =>
