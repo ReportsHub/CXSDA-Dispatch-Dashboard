@@ -505,7 +505,7 @@ tbody td:nth-child(35){
 
 .modal-content{
     background:white;
-    width:95%;
+    width:98%;
     max-width:1400px;
     max-height:85vh;
     overflow-y:auto;
@@ -532,10 +532,10 @@ tbody td:nth-child(35){
 ========================================== */
 
 .modal-content table{
-    width:100%;
-    min-width:1400px;
+    width:max-content;
+    min-width:1000px;
     border-collapse:collapse;
-    table-layout:fixed;
+    table-layout:auto;
 }
 
 .modal-content th{
@@ -555,7 +555,7 @@ tbody td:nth-child(35){
 
 .modal-content td{
     white-space:normal;
-    word-break:normal;
+    word-break:keep-all;
     overflow-wrap:break-word;
 }
 
@@ -652,7 +652,7 @@ tbody td:nth-child(35){
 /* CUSTOMER NAME */
 .tech-details th:nth-child(5),
 .tech-details td:nth-child(5){
-    width:250px;
+    width:220px;
     text-align:left;
 }
 
@@ -666,7 +666,8 @@ tbody td:nth-child(35){
 /* ACCOUNT NUMBER */
 .tech-details th:nth-child(7),
 .tech-details td:nth-child(7){
-    width:150px;
+    width:140px;
+    text-align:center;
 }
 
 /* ==========================================
