@@ -179,10 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <thead>
                     <tr>
                         <th>WO ID</th>
+                        <th>E.Age</th>
+                        <th>Activity</th>
+                        <th>Last Mile</th>
                         <th>Customer Name</th>
-                        <th>F.STAT</th>
-                        <th>SO TYPE</th>
-                        <th>E.AGE</th>
+                        <th>Customer Address</th>
+                        <th>Account Number</th>
                     </tr>
                 </thead>
     
@@ -194,10 +196,12 @@ document.addEventListener("DOMContentLoaded", () => {
             html += `
                 <tr>
                     <td>${r["Work Order ID"] || ""}</td>
-                    <td>${r["Customer Name"] || ""}</td>
-                    <td>${r["F.STAT"] || ""}</td>
-                    <td>${r["SO TYPE"] || ""}</td>
                     <td>${r["E.AGE"] || ""}</td>
+                    <td>${r["SO TYPE"] || ""}</td>
+                    <td>${r["ACTIVITY"] || ""}</td>
+                    <td>${r["Customer Name"] || ""}</td>
+                    <td>${r["Address"] || ""}</td>
+                    <td>${r["Account Number"] || ""}</td>
                 </tr>
             `;
     
