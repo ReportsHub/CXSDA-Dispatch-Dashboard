@@ -12,11 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeModal = document.getElementById("closeModal");
     const clearButton = document.getElementById("clearFilters");
     const exportButton = document.getElementById("exportButton");
+    const ageDropdownBtn = document.getElementById("ageDropdownBtn");
+    const ageFilterGroup = document.getElementById("ageFilterGroup");
 
     closeModal.addEventListener(
         "click",
         () => detailModal.style.display = "none"
     );
+
+    ageDropdownBtn.addEventListener("click", () => {
+    
+        ageFilterGroup.classList.toggle("show");
+    
+    });
 
     let allData = [];
 
