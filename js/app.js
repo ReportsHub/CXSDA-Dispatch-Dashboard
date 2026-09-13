@@ -377,6 +377,32 @@ document.addEventListener("DOMContentLoaded", () => {
     
         return records;
     }
+
+    function updateAgeButton(){
+    
+        const selected =
+            getSelectedAges();
+    
+        if(selected.length === 0){
+    
+            ageDropdownBtn.textContent =
+                "Aging ▼";
+    
+        }
+        else if(selected.length <= 2){
+    
+            ageDropdownBtn.textContent =
+                selected.join(", ") + " ▼";
+    
+        }
+        else{
+    
+            ageDropdownBtn.textContent =
+                `${selected.length} Selected ▼`;
+    
+        }
+    
+    }
     
     function buildTable(){
 
@@ -834,8 +860,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     statusFilter.addEventListener("change", buildTable);
 
-    ageCheckboxes.forEach(cb => {cb.addEventListener("change",buildTable);
-});
+    ageCheckboxes.forEach(cb => {cb.addEventListener("change", () => {
+        updateAgeButton();
+        buildTable();
+        });
+    });
     
     lastMileFilter.addEventListener("change", buildTable);
 
