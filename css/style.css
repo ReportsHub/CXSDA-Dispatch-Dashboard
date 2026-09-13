@@ -224,7 +224,7 @@ thead th{
 thead tr:nth-child(1) th{
     position:sticky;
     top:0;
-    z-index:20;
+    z-index:100;
     background:#cfe2f3;
 }
 
@@ -236,16 +236,16 @@ thead tr:nth-child(1) th:not(.corner){
 /* Row 2 */
 thead tr:nth-child(2) th{
     position:sticky;
-    top:34px;
-    z-index:40;
+    top:340px;
+    z-index:90;
     background:#efe7c5;
 }
 
 /* Row 3 */
 thead tr:nth-child(3) th{
     position:sticky;
-    top:68px;
-    z-index:30;
+    top:60px;
+    z-index:80;
     background:#efe7c5;
 }
 
@@ -257,7 +257,7 @@ thead tr:nth-child(3) th{
 tbody td.first-col{
     position:sticky;
     left:0;
-    z-index:20;
+    z-index:50;
     background:white;
     box-shadow:3px 0 6px rgba(0,0,0,.10);
 }
@@ -268,7 +268,7 @@ thead th.corner{
     position:sticky;
     top:0;
     left:0;
-    z-index:9999;
+    z-index:1000;
     background:#efe7c5;
     min-width:220px;
     width:220px;
