@@ -156,6 +156,24 @@ document.addEventListener("DOMContentLoaded", () => {
     function showValue(value){
         return value === 0 ? "" : value;
     }
+
+    function getTotal(data){
+    
+        return (
+            data.NC +
+            data.AO +
+            data.IPTV +
+            data.NWUP +
+            data.RELOC +
+            data.AS +
+            data.WAR0 +
+            data.WAR1 +
+            data.WAR2 +
+            data.WAR3 +
+            data.WAR47
+        );
+    
+    }
     
     function buildTable(){
 
@@ -183,17 +201,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
             technicians = technicians.filter(person => {
 
+                const techRecords = allData.filter(r =>
+                    r[CX_NAME] === person[CX_NAME]
+                );
+                
+                const completed = getCounts(
+                    techRecords.filter(r =>
+                        (r["F.STAT"] || "").trim() === "COMPLETED"
+                    )
+                );
+                
+                const handled = getCounts(
+                    techRecords.filter(r =>
+                        (r["F.STAT"] || "").trim() === "HANDLED"
+                    )
+                );
+                
+                const unhandled = getCounts(
+                    techRecords.filter(r =>
+                        (r["F.STAT"] || "").trim() === "PENDING/UNHANDLED"
+                    )
+                );
+                
                 const searchMatch =
                     keyword === "" ||
                     (person[CX_NAME] || "")
                         .toLowerCase()
                         .includes(keyword);
-
+                
                 const clusterMatch =
                     selectedCluster === "ALL" ||
                     cluster === selectedCluster;
-
-                return searchMatch && clusterMatch;
+                
+                const selectedStatus = statusFilter.value;
+                
+                let statusMatch = true;
+                
+                if(selectedStatus === "COMPLETED"){
+                    statusMatch = getTotal(completed) > 0;
+                }
+                
+                else if(selectedStatus === "HANDLED"){
+                    statusMatch = getTotal(handled) > 0;
+                }
+                
+                else if(selectedStatus === "UNHANDLED"){
+                    statusMatch = getTotal(unhandled) > 0;
+                }
+                
+                else if(selectedStatus === "DISPATCHED"){
+                    statusMatch = true;
+                }
+                
+                return searchMatch && clusterMatch && statusMatch;
 
             });
 
