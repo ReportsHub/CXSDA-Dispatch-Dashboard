@@ -541,3 +541,14 @@ tbody td:nth-child(35){
     border:1px solid #ccc;
     padding:6px;
 }
+
+.modal-content table{
+    width:100%;
+    table-layout:auto;
+}
+
+.modal-content td{
+    max-width:300px;
+    word-wrap:break-word;
+    white-space:normal;
+}
