@@ -200,6 +200,30 @@ document.addEventListener("DOMContentLoaded", () => {
             if(technicians.length === 0)
                 return;
 
+            const clusterRecords = allData.filter(
+                r => r[CLUSTER] === cluster
+            );
+            
+            const clusterDispatched = getCounts(clusterRecords);
+            
+            const clusterCompleted = getCounts(
+                clusterRecords.filter(r =>
+                    (r["F.STAT"] || "").trim() === "COMPLETED"
+                )
+            );
+            
+            const clusterHandled = getCounts(
+                clusterRecords.filter(r =>
+                    (r["F.STAT"] || "").trim() === "HANDLED"
+                )
+            );
+            
+            const clusterUnhandled = getCounts(
+                clusterRecords.filter(r =>
+                    (r["F.STAT"] || "").trim() === "PENDING/UNHANDLED"
+                )
+            );
+
             // ========================
             // CLUSTER HEADER ROW
             // ========================
@@ -208,8 +232,69 @@ document.addEventListener("DOMContentLoaded", () => {
             clusterRow.className = "cluster-row";
 
             clusterRow.innerHTML = `
-                <td class="first-col">${cluster}</td>
-                <td colspan="44">Cluster Totals</td>
+
+            <td class="first-col">${cluster}</td>
+            
+            <!-- DISPATCHED -->
+            
+            <td>${showValue(clusterDispatched.NC)}</td>
+            <td>${showValue(clusterDispatched.AO)}</td>
+            <td>${showValue(clusterDispatched.IPTV)}</td>
+            <td>${showValue(clusterDispatched.NWUP)}</td>
+            <td>${showValue(clusterDispatched.RELOC)}</td>
+            <td>${showValue(clusterDispatched.AS)}</td>
+            
+            <td>${showValue(clusterDispatched.WAR0)}</td>
+            <td>${showValue(clusterDispatched.WAR1)}</td>
+            <td>${showValue(clusterDispatched.WAR2)}</td>
+            <td>${showValue(clusterDispatched.WAR3)}</td>
+            <td>${showValue(clusterDispatched.WAR47)}</td>
+            
+            <!-- COMPLETED -->
+            
+            <td>${showValue(clusterCompleted.NC)}</td>
+            <td>${showValue(clusterCompleted.AO)}</td>
+            <td>${showValue(clusterCompleted.IPTV)}</td>
+            <td>${showValue(clusterCompleted.NWUP)}</td>
+            <td>${showValue(clusterCompleted.RELOC)}</td>
+            <td>${showValue(clusterCompleted.AS)}</td>
+            
+            <td>${showValue(clusterCompleted.WAR0)}</td>
+            <td>${showValue(clusterCompleted.WAR1)}</td>
+            <td>${showValue(clusterCompleted.WAR2)}</td>
+            <td>${showValue(clusterCompleted.WAR3)}</td>
+            <td>${showValue(clusterCompleted.WAR47)}</td>
+            
+            <!-- HANDLED -->
+            
+            <td>${showValue(clusterHandled.NC)}</td>
+            <td>${showValue(clusterHandled.AO)}</td>
+            <td>${showValue(clusterHandled.IPTV)}</td>
+            <td>${showValue(clusterHandled.NWUP)}</td>
+            <td>${showValue(clusterHandled.RELOC)}</td>
+            <td>${showValue(clusterHandled.AS)}</td>
+            
+            <td>${showValue(clusterHandled.WAR0)}</td>
+            <td>${showValue(clusterHandled.WAR1)}</td>
+            <td>${showValue(clusterHandled.WAR2)}</td>
+            <td>${showValue(clusterHandled.WAR3)}</td>
+            <td>${showValue(clusterHandled.WAR47)}</td>
+            
+            <!-- UNHANDLED -->
+            
+            <td>${showValue(clusterUnhandled.NC)}</td>
+            <td>${showValue(clusterUnhandled.AO)}</td>
+            <td>${showValue(clusterUnhandled.IPTV)}</td>
+            <td>${showValue(clusterUnhandled.NWUP)}</td>
+            <td>${showValue(clusterUnhandled.RELOC)}</td>
+            <td>${showValue(clusterUnhandled.AS)}</td>
+            
+            <td>${showValue(clusterUnhandled.WAR0)}</td>
+            <td>${showValue(clusterUnhandled.WAR1)}</td>
+            <td>${showValue(clusterUnhandled.WAR2)}</td>
+            <td>${showValue(clusterUnhandled.WAR3)}</td>
+            <td>${showValue(clusterUnhandled.WAR47)}</td>
+            
             `;
 
             tbody.appendChild(clusterRow);
