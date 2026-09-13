@@ -211,65 +211,36 @@ thead{
     position:relative;
 }
 
-
 thead th{
-
     /*position:sticky; */
-
-    height:30px;
-
+    height:34px;
     padding:0 8px;
-
-    line-height:30px;
-
+    line-height:34px;
     vertical-align:middle;
-
 }
 
 /* Row 1 */
-
 thead tr:nth-child(1) th{
-
     position:sticky;
-
     top:0;
-
     z-index:50;
-
     background:#cfe2f3;
-
 }
-
-
 
 /* Row 2 */
-
 thead tr:nth-child(2) th{
-
     position:sticky;
-
-    top:30px;
-
+    top:34px;
     z-index:40;
-
     background:#efe7c5;
-
 }
 
-
-
 /* Row 3 */
-
 thead tr:nth-child(3) th{
-
     position:sticky;
-
-    top:60px;
-
+    top:68px;
     z-index:30;
-
     background:#efe7c5;
-
 }
 
 /* ==========================================
