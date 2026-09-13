@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <td>${showValue(clusterCompleted.AS)}</td>
             
             <td>${showValue(clusterCompleted.WAR0)}</td>
-            <td>${showValue(clusterCompleted.WAR1)}</td>
+            ${createDrillCell(clusterCompleted.WAR1,"COMPLETED","WAR","1 D")}
             <td>${showValue(clusterCompleted.WAR2)}</td>
             <td>${showValue(clusterCompleted.WAR3)}</td>
             <td>${showValue(clusterCompleted.WAR47)}</td>
@@ -438,6 +438,55 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             tbody.appendChild(clusterRow);
+
+            const clusterDrillCells =
+                clusterRow.querySelectorAll(".drilldown");
+            
+            clusterDrillCells.forEach(cell => {
+            
+                cell.addEventListener("dblclick", () => {
+            
+                    const status =
+                        cell.dataset.status;
+            
+                    const soType =
+                        cell.dataset.sotype;
+            
+                    const age =
+                        cell.dataset.age;
+            
+                    const records =
+                        clusterRecords.filter(r => {
+            
+                            const statusMatch =
+                                status === "DISPATCHED"
+                                    ? true
+                                    : (r["F.STAT"] || "").trim() === status;
+            
+                            const soTypeMatch =
+                                (r["SO TYPE"] || "").trim() === soType;
+            
+                            const ageMatch =
+                                soType !== "WAR"
+                                    ? true
+                                    : (r["E.AGE"] || "").trim() === age;
+            
+                            return (
+                                statusMatch &&
+                                soTypeMatch &&
+                                ageMatch
+                            );
+            
+                        });
+            
+                    showDrillDown(
+                        `${cluster} | ${status} | ${soType}${age ? " | " + age : ""}`,
+                        records
+                    );
+            
+                });
+            
+            });
 
             // ========================
             // TECHNICIAN ROWS
