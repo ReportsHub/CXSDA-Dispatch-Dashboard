@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </td>
         `;
     }
-    function showDrillDown(title, records){
+    function showDrillDown(title, records, showCXName = false){
 
         let html = `
             <h3 style="margin-bottom:10px;">
@@ -203,6 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <thead>
                     <tr>
                         <th>WO ID</th>
+                    
+                        ${showCXName ? "<th>CX Name</th>" : ""}
+                    
                         <th>E.Age</th>
                         <th>Activity</th>
                         <th>Last Mile</th>
@@ -220,6 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
             html += `
                 <tr>
                     <td>${r["Work Order ID"] || ""}</td>
+                    ${showCXName ? `<td>${r["CX_NAME"] || ""}</td>` : ""}
                     <td>${r["E.AGE"] || ""}</td>
                     <td>${r["SO TYPE"] || ""}</td>
                     <td>${r["ACTIVITY"] || ""}</td>
@@ -480,7 +484,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
                     showDrillDown(
                         `${cluster} | ${status} | ${soType}${age ? " | " + age : ""}`,
-                        records
+                        records,
+                        true
                     );
             
                 });
