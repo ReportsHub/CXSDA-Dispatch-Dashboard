@@ -568,7 +568,7 @@ tbody td:nth-child(35){
 ========================================== */
 
 .tech-details{
-    min-width:1800px;
+    min-width:1700px;
 }
 
 /* WO ID */
@@ -602,14 +602,14 @@ tbody td:nth-child(35){
 /* CUSTOMER NAME */
 .tech-details th:nth-child(5),
 .tech-details td:nth-child(5){
-    width:350px;
+    width:300px;
     text-align:left;
 }
 
 /* CUSTOMER ADDRESS */
 .tech-details th:nth-child(6),
 .tech-details td:nth-child(6){
-    width:900px;
+    width:800px;
     text-align:left;
 }
 
