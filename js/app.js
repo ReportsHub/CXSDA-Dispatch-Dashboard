@@ -314,8 +314,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const selectedCluster =
             clusterFilter.value;
     
-        const selectedAge =
-            ageFilter.value;
+        const selectedAges =
+            getSelectedAges();
     
         const selectedLastMile =
             lastMileFilter.value;
@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const keyword = searchBox.value.trim().toLowerCase();
         const selectedCluster = clusterFilter.value;
-        const selectedAge = getSelectedAges();
+        const selectedAges = getSelectedAges();
         const selectedLastMile = lastMileFilter.value;
 
         const clusters = clusterOrder.filter(cluster =>
@@ -653,7 +653,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 if(techRecords.length === 0){
-                    return false;
+                    return;
                 }
                 
                 if(selectedAges.length > 0){
