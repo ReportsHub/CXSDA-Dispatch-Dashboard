@@ -171,6 +171,11 @@ document.addEventListener("DOMContentLoaded", () => {
         soType,
         age
     ){
+    
+        if(value === 0){
+            return `<td></td>`;
+        }
+    
         return `
             <td
                 class="drilldown"
@@ -178,11 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 data-sotype="${soType}"
                 data-age="${age || ""}"
             >
-                ${showValue(value)}
+                ${value}
             </td>
         `;
     }
-
     function showDrillDown(title, records){
 
         let html = `
@@ -433,55 +437,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             tbody.appendChild(clusterRow);
-
-            const clusterDrillCells =
-                clusterRow.querySelectorAll(".drilldown");
-            
-            clusterDrillCells.forEach(cell => {
-            
-                cell.addEventListener("dblclick", () => {
-            
-                    const status =
-                        cell.dataset.status;
-            
-                    const soType =
-                        cell.dataset.sotype;
-            
-                    const age =
-                        cell.dataset.age;
-            
-                    const records =
-                        clusterRecords.filter(r => {
-            
-                            const statusMatch =
-                                status === "DISPATCHED"
-                                    ? true
-                                    : (r["F.STAT"] || "").trim() === status;
-            
-                            const soTypeMatch =
-                                (r["SO TYPE"] || "").trim() === soType;
-            
-                            const ageMatch =
-                                soType !== "WAR"
-                                    ? true
-                                    : (r["E.AGE"] || "").trim() === age;
-            
-                            return (
-                                statusMatch &&
-                                soTypeMatch &&
-                                ageMatch
-                            );
-            
-                        });
-            
-                    showDrillDown(
-                        `${cluster} | ${status} | ${soType}${age ? " | " + age : ""}`,
-                        records
-                    );
-            
-                });
-            
-            });
 
             const clusterDrillCells =
                 clusterRow.querySelectorAll(".drilldown");
