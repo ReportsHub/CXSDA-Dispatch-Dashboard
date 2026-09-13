@@ -165,13 +165,33 @@ document.addEventListener("DOMContentLoaded", () => {
         return value === 0 ? "" : value;
     }
 
+    function createDrillCell(
+        value,
+        status,
+        soType,
+        age
+    ){
+        return `
+            <td
+                class="drilldown"
+                data-status="${status}"
+                data-sotype="${soType}"
+                data-age="${age || ""}"
+            >
+                ${showValue(value)}
+            </td>
+        `;
+    }
+
     function showDrillDown(title, records){
 
         let html = `
-            <h3>${title}</h3>
-            <p>
-                Total Records:
-                <b>${records.length}</b>
+            <h3 style="margin-bottom:10px;">
+                ${title}
+            </h3>
+            <p style="margin-bottom:15px;">
+                <strong>Total Records:</strong>
+                ${records.length}
             </p>
     
             <table>
@@ -464,71 +484,60 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 <!-- DISPATCHED -->
                 
-                <td>${showValue(dispatched.NC)}</td>
-                <td>${showValue(dispatched.AO)}</td>
-                <td>${showValue(dispatched.IPTV)}</td>
-                <td>${showValue(dispatched.NWUP)}</td>
-                <td>${showValue(dispatched.RELOC)}</td>
-                <td>${showValue(dispatched.AS)}</td>
+                ${createDrillCell(dispatched.NC,"DISPATCHED","NC")}
+                ${createDrillCell(dispatched.AO,"DISPATCHED","A/O")}
+                ${createDrillCell(dispatched.IPTV,"DISPATCHED","IPTV")}
+                ${createDrillCell(dispatched.NWUP,"DISPATCHED","NWUP")}
+                ${createDrillCell(dispatched.RELOC,"DISPATCHED","RELOC")}
+                ${createDrillCell(dispatched.AS,"DISPATCHED","AS")}
                 
-                <td>${showValue(dispatched.WAR0)}</td>
-                <td>${showValue(dispatched.WAR1)}</td>
-                <td>${showValue(dispatched.WAR2)}</td>
-                <td>${showValue(dispatched.WAR3)}</td>
-                <td>${showValue(dispatched.WAR47)}</td>
+                ${createDrillCell(dispatched.WAR0,"DISPATCHED","WAR","0 D")}
+                ${createDrillCell(dispatched.WAR1,"DISPATCHED","WAR","1 D")}
+                ${createDrillCell(dispatched.WAR2,"DISPATCHED","WAR","2 D")}
+                ${createDrillCell(dispatched.WAR3,"DISPATCHED","WAR","3 D")}
+                ${createDrillCell(dispatched.WAR47,"DISPATCHED","WAR","4-7 D")}
                 
                 <!-- COMPLETED -->
+                ${createDrillCell(completed.NC,"COMPLETED","NC")}
+                ${createDrillCell(completed.AO,"COMPLETED","A/O")}
+                ${createDrillCell(completed.IPTV,"COMPLETED","IPTV")}
+                ${createDrillCell(completed.NWUP,"COMPLETED","NWUP")}
+                ${createDrillCell(completed.RELOC,"COMPLETED","RELOC")}
+                ${createDrillCell(completed.AS,"COMPLETED","AS")}
                 
-                <td>${showValue(completed.NC)}</td>
-                <td>${showValue(completed.AO)}</td>
-                <td>${showValue(completed.IPTV)}</td>
-                <td>${showValue(completed.NWUP)}</td>
-                <td>${showValue(completed.RELOC)}</td>
-                <td>${showValue(completed.AS)}</td>
-                
-                <td>${showValue(completed.WAR0)}</td>
-                <td
-                    class="drilldown"
-                    data-status="COMPLETED"
-                    data-sotype="WAR"
-                    data-age="1 D"
-                >
-                    ${showValue(completed.WAR1)}
-                </td>
-                <td>${showValue(completed.WAR2)}</td>
-                <td>${showValue(completed.WAR3)}</td>
-                <td>${showValue(completed.WAR47)}</td>
+                ${createDrillCell(completed.WAR0,"COMPLETED","WAR","0 D")}
+                ${createDrillCell(completed.WAR1,"COMPLETED","WAR","1 D")}
+                ${createDrillCell(completed.WAR2,"COMPLETED","WAR","2 D")}
+                ${createDrillCell(completed.WAR3,"COMPLETED","WAR","3 D")}
+                ${createDrillCell(completed.WAR47,"COMPLETED","WAR","4-7 D")}
                 
                 <!-- HANDLED -->
+                ${createDrillCell(handled.NC,"HANDLED","NC")}
+                ${createDrillCell(handled.AO,"HANDLED","A/O")}
+                ${createDrillCell(handled.IPTV,"HANDLED","IPTV")}
+                ${createDrillCell(handled.NWUP,"HANDLED","NWUP")}
+                ${createDrillCell(handled.RELOC,"HANDLED","RELOC")}
+                ${createDrillCell(handled.AS,"HANDLED","AS")}
                 
-                <td>${showValue(handled.NC)}</td>
-                <td>${showValue(handled.AO)}</td>
-                <td>${showValue(handled.IPTV)}</td>
-                <td>${showValue(handled.NWUP)}</td>
-                <td>${showValue(handled.RELOC)}</td>
-                <td>${showValue(handled.AS)}</td>
-                
-                <td>${showValue(handled.WAR0)}</td>
-                <td>${showValue(handled.WAR1)}</td>
-                <td>${showValue(handled.WAR2)}</td>
-                <td>${showValue(handled.WAR3)}</td>
-                <td>${showValue(handled.WAR47)}</td>
+                ${createDrillCell(handled.WAR0,"HANDLED","WAR","0 D")}
+                ${createDrillCell(handled.WAR1,"HANDLED","WAR","1 D")}
+                ${createDrillCell(handled.WAR2,"HANDLED","WAR","2 D")}
+                ${createDrillCell(handled.WAR3,"HANDLED","WAR","3 D")}
+                ${createDrillCell(handled.WAR47,"HANDLED","WAR","4-7 D")}
                 
                 <!-- UNHANDLED -->
+                ${createDrillCell(unhandled.NC,"PENDING/UNHANDLED","NC")}
+                ${createDrillCell(unhandled.AO,"PENDING/UNHANDLED","A/O")}
+                ${createDrillCell(unhandled.IPTV,"PENDING/UNHANDLED","IPTV")}
+                ${createDrillCell(unhandled.NWUP,"PENDING/UNHANDLED","NWUP")}
+                ${createDrillCell(unhandled.RELOC,"PENDING/UNHANDLED","RELOC")}
+                ${createDrillCell(unhandled.AS,"PENDING/UNHANDLED","AS")}
                 
-                <td>${showValue(unhandled.NC)}</td>
-                <td>${showValue(unhandled.AO)}</td>
-                <td>${showValue(unhandled.IPTV)}</td>
-                <td>${showValue(unhandled.NWUP)}</td>
-                <td>${showValue(unhandled.RELOC)}</td>
-                <td>${showValue(unhandled.AS)}</td>
-                
-                <td>${showValue(unhandled.WAR0)}</td>
-                <td>${showValue(unhandled.WAR1)}</td>
-                <td>${showValue(unhandled.WAR2)}</td>
-                <td>${showValue(unhandled.WAR3)}</td>
-                <td>${showValue(unhandled.WAR47)}</td>
-                
+                ${createDrillCell(unhandled.WAR0,"PENDING/UNHANDLED","WAR","0 D")}
+                ${createDrillCell(unhandled.WAR1,"PENDING/UNHANDLED","WAR","1 D")}
+                ${createDrillCell(unhandled.WAR2,"PENDING/UNHANDLED","WAR","2 D")}
+                ${createDrillCell(unhandled.WAR3,"PENDING/UNHANDLED","WAR","3 D")}
+                ${createDrillCell(unhandled.WAR47,"PENDING/UNHANDLED","WAR","4-7 D")}
                 `;
 
                 tbody.appendChild(row);
@@ -551,13 +560,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                         const records =
                             techRecords.filter(r => {
-                
+                        
+                                const statusMatch =
+                                    status === "DISPATCHED"
+                                        ? true
+                                        : (r["F.STAT"] || "").trim() === status;
+                        
+                                const soTypeMatch =
+                                    (r["SO TYPE"] || "").trim() === soType;
+                        
+                                const ageMatch =
+                                    soType !== "WAR"
+                                        ? true
+                                        : (r["E.AGE"] || "").trim() === age;
+                        
                                 return (
-                                    (r["F.STAT"] || "").trim() === status &&
-                                    (r["SO TYPE"] || "").trim() === soType &&
-                                    (r["E.AGE"] || "").trim() === age
+                                    statusMatch &&
+                                    soTypeMatch &&
+                                    ageMatch
                                 );
-                
+                        
                             });
                 
                         showDrillDown(
