@@ -12,6 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let CLUSTER = "";
     let CX_NAME = "";
 
+    const clusterOrder = [
+        "CLUSTER 1",
+        "CLUSTER 2",
+        "CLUSTER 3",
+        "CLUSTER 4",
+        "CLUSTER 5",
+        "CLUSTER 6",
+        "SME"
+    ];
+
     // ==========================================
     // COUNT SO TYPES
     // ==========================================
@@ -123,16 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clusterFilter.innerHTML =
             '<option value="ALL">All Clusters</option>';
 
-        const clusterOrder = [
-            "CLUSTER 1",
-            "CLUSTER 2",
-            "CLUSTER 3",
-            "CLUSTER 4",
-            "CLUSTER 5",
-            "CLUSTER 6",
-            "SME"
-        ];
-        
         const clusters = clusterOrder.filter(cluster =>
             allData.some(r => r[CLUSTER] === cluster)
         );
@@ -164,9 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const keyword = searchBox.value.trim().toLowerCase();
         const selectedCluster = clusterFilter.value;
 
-        const clusters = [...new Set(
-            allData.map(r => r[CLUSTER])
-        )].filter(Boolean);
+        const clusters = clusterOrder.filter(cluster =>
+            allData.some(r => r[CLUSTER] === cluster)
+        );
 
         clusters.forEach(cluster => {
 
