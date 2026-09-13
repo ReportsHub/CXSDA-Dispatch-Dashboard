@@ -381,18 +381,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const clusterMatch =
                     selectedCluster === "ALL" ||
                     cluster === selectedCluster;
-
-                const ageMatch =
-                    selectedAge === "ALL" ||
-                    techRecords.some(r =>
-                        (r["E.AGE"] || "").trim() === selectedAge
-                    );
-                
-                const lastMileMatch =
-                    selectedLastMile === "ALL" ||
-                    techRecords.some(r =>
-                        (r["ACTIVITY"] || "").trim() === selectedLastMile
-                    );
                 
                 const selectedStatus = statusFilter.value;
                 
@@ -414,16 +402,28 @@ document.addEventListener("DOMContentLoaded", () => {
                     statusMatch = true;
                 }
                 
-                return searchMatch && clusterMatch && ageMatch && lastMileMatch && statusMatch;
+                return searchMatch && clusterMatch && statusMatch;
 
             });
 
             if(technicians.length === 0)
                 return;
 
-            const clusterRecords = allData.filter(
+            let clusterRecords = allData.filter(
                 r => r[CLUSTER] === cluster
             );
+            
+            if(selectedAge !== "ALL"){
+                clusterRecords = clusterRecords.filter(r =>
+                    (r["E.AGE"] || "").trim() === selectedAge
+                );
+            }
+            
+            if(selectedLastMile !== "ALL"){
+                clusterRecords = clusterRecords.filter(r =>
+                    (r["ACTIVITY"] || "").trim() === selectedLastMile
+                );
+            }
             
             const clusterDispatched = getCounts(clusterRecords);
             
@@ -570,9 +570,21 @@ document.addEventListener("DOMContentLoaded", () => {
             // ========================
             technicians.forEach(person => {
 
-                const techRecords = allData.filter(r =>
+                let techRecords = allData.filter(r =>
                     r[CX_NAME] === person[CX_NAME]
                 );
+                
+                if(selectedAge !== "ALL"){
+                    techRecords = techRecords.filter(r =>
+                        (r["E.AGE"] || "").trim() === selectedAge
+                    );
+                }
+                
+                if(selectedLastMile !== "ALL"){
+                    techRecords = techRecords.filter(r =>
+                        (r["ACTIVITY"] || "").trim() === selectedLastMile
+                    );
+                }
                 
                 // DISPATCHED
                 const dispatched = getCounts(
