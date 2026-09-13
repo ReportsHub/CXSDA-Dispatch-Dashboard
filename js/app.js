@@ -429,23 +429,29 @@ document.addEventListener("DOMContentLoaded", () => {
             if(technicians.length === 0)
                 return;
 
-            let clusterRecords = allData.filter(
-                r => r[CLUSTER] === cluster
-            );
+            let clusterRecords = [];
             
-            if(selectedAge !== "ALL"){
-                clusterRecords = clusterRecords.filter(r =>
-                    (r["E.AGE"] || "").trim() === selectedAge
+            technicians.forEach(person => {
+            
+                let records = allData.filter(r =>
+                    r[CX_NAME] === person[CX_NAME]
                 );
-            }
             
-            if(selectedLastMile !== "ALL"){
-                clusterRecords = clusterRecords.filter(r =>
-                    (r["ACTIVITY"] || "").trim() === selectedLastMile
-                );
-            }
+                if(selectedAge !== "ALL"){
+                    records = records.filter(r =>
+                        (r["E.AGE"] || "").trim() === selectedAge
+                    );
+                }
             
-            const clusterDispatched = getCounts(clusterRecords);
+                if(selectedLastMile !== "ALL"){
+                    records = records.filter(r =>
+                        (r["ACTIVITY"] || "").trim() === selectedLastMile
+                    );
+                }
+            
+                clusterRecords.push(...records);
+            
+            });
             
             const clusterCompleted = getCounts(
                 clusterRecords.filter(r =>
