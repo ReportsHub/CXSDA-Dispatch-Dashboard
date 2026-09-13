@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const tbody = document.getElementById("dispatchTable");
 
     const searchBox = document.getElementById("searchBox");
-    const ageFilter = document.getElementById("ageFilter");
+    const ageCheckboxes = document.querySelectorAll('#ageFilterGroup input[type="checkbox"]');
     const lastMileFilter = document.getElementById("lastMileFilter");
     const clusterFilter = document.getElementById("clusterFilter");
     const statusFilter = document.getElementById("statusFilter");
@@ -127,7 +127,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Rows:", allData.length);
 
             populateClusterFilter();
-            populateAgeFilter();
             populateLastMileFilter();
             
             buildTable();
@@ -162,31 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-    }
-
-    function populateAgeFilter(){
-
-        ageFilter.innerHTML =
-            '<option value="ALL">All Aging</option>';
-    
-        const ages = [...new Set(
-            allData.map(r => r["E.AGE"])
-        )]
-        .filter(Boolean)
-        .sort();
-    
-        ages.forEach(age => {
-    
-            const option =
-                document.createElement("option");
-    
-            option.value = age;
-            option.textContent = age;
-    
-            ageFilter.appendChild(option);
-    
-        });
-    
     }
     
     function populateLastMileFilter(){
@@ -323,6 +297,13 @@ document.addEventListener("DOMContentLoaded", () => {
     
     }
 
+    function getSelectedAges(){
+        return [...ageCheckboxes]
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+    
+    }
+
     function getFilteredRecords(){
     
         let records = [...allData];
@@ -356,9 +337,9 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         }
     
-        if(selectedAge !== "ALL"){
+        if(selectedAges.length > 0){
             records = records.filter(r =>
-                (r["E.AGE"] || "").trim() === selectedAge
+                selectedAges.includes((r["E.AGE"] || "").trim())
             );
         }
     
@@ -395,7 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const keyword = searchBox.value.trim().toLowerCase();
         const selectedCluster = clusterFilter.value;
-        const selectedAge = ageFilter.value;
+        const selectedAge = getSelectedAges();
         const selectedLastMile = lastMileFilter.value;
 
         const clusters = clusterOrder.filter(cluster =>
@@ -421,9 +402,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     r[CX_NAME] === person[CX_NAME]
                 );
                 
-                if(selectedAge !== "ALL"){
+                if(selectedAges.length > 0){
                     techRecords = techRecords.filter(r =>
-                        (r["E.AGE"] || "").trim() === selectedAge
+                        selectedAges.includes((r["E.AGE"] || "").trim())
                     );
                 }
                 
@@ -504,9 +485,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     r[CX_NAME] === person[CX_NAME]
                 );
             
-                if(selectedAge !== "ALL"){
+                if(selectedAges.length > 0){
                     records = records.filter(r =>
-                        (r["E.AGE"] || "").trim() === selectedAge
+                        selectedAges.includes((r["E.AGE"] || "").trim())
                     );
                 }
             
@@ -675,9 +656,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     return false;
                 }
                 
-                if(selectedAge !== "ALL"){
+                if(selectedAges.length > 0){
                     techRecords = techRecords.filter(r =>
-                        (r["E.AGE"] || "").trim() === selectedAge
+                        selectedAges.includes((r["E.AGE"] || "").trim())
                     );
                 }
                 
@@ -845,7 +826,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     statusFilter.addEventListener("change", buildTable);
 
-    ageFilter.addEventListener("change", buildTable);
+    ageCheckboxes.forEach(cb => {cb.addEventListener("change",buildTable);
+});
     
     lastMileFilter.addEventListener("change", buildTable);
 
@@ -886,7 +868,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         searchBox.value = "";
         clusterFilter.value = "ALL";
-        ageFilter.value = "ALL";
+        ageCheckboxes.forEach(cb => {cb.checked = false;});
         lastMileFilter.value = "ALL";
     
         statusFilter.value = "DISPATCHED";
