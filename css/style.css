@@ -527,53 +527,90 @@ tbody td:nth-child(35){
     color:red;
 }
 
+/* ==========================================
+   DRILL DOWN TABLE
+========================================== */
+
 .modal-content table{
     width:100%;
-    min-width:auto;
+    min-width:1400px;
+    border-collapse:collapse;
+    table-layout:fixed;
 }
 
 .modal-content th{
     background:#1f4e79;
     color:white;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
 .modal-content td,
 .modal-content th{
     border:1px solid #ccc;
-    padding:6px;
-}
-
-.modal-content table{
-    width:100%;
-    table-layout:auto;
-}
-
-.modal-content td{
-    max-width:300px;
-    word-wrap:break-word;
-    white-space:normal;
-}
-
-.modal-content table{
-    width:100%;
-    border-collapse:collapse;
-    table-layout:fixed;
-}
-
-.modal-content td{
-    white-space:normal;
-    word-break:break-word;
+    padding:8px;
     vertical-align:top;
 }
 
-.modal-content th:nth-child(6),
-.modal-content td:nth-child(6){
-    width:350px;
+.modal-content td{
+    white-space:normal;
+    word-break:normal;
+    overflow-wrap:break-word;
+}
+
+/* WO ID */
+.modal-content th:nth-child(1),
+.modal-content td:nth-child(1){
+    width:110px;
+    text-align:center;
+}
+
+/* CX NAME */
+.modal-content th:nth-child(2),
+.modal-content td:nth-child(2){
+    width:180px;
     text-align:left;
 }
 
+/* E.AGE */
+.modal-content th:nth-child(3),
+.modal-content td:nth-child(3){
+    width:70px;
+    text-align:center;
+}
+
+/* ACTIVITY */
+.modal-content th:nth-child(4),
+.modal-content td:nth-child(4){
+    width:90px;
+    text-align:center;
+}
+
+/* LAST MILE */
 .modal-content th:nth-child(5),
 .modal-content td:nth-child(5){
-    width:220px;
+    width:100px;
+    text-align:center;
+}
+
+/* CUSTOMER NAME */
+.modal-content th:nth-child(6),
+.modal-content td:nth-child(6){
+    width:280px;
     text-align:left;
+}
+
+/* CUSTOMER ADDRESS */
+.modal-content th:nth-child(7),
+.modal-content td:nth-child(7){
+    width:450px;
+    text-align:left;
+}
+
+/* ACCOUNT NUMBER */
+.modal-content th:nth-child(8),
+.modal-content td:nth-child(8){
+    width:140px;
+    text-align:center;
 }
