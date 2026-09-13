@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalBody = document.getElementById("modalBody");
     const closeModal = document.getElementById("closeModal");
     const clearButton = document.getElementById("clearFilters");
+    const exportButton = document.getElementById("exportButton");
 
     closeModal.addEventListener(
         "click",
@@ -320,6 +321,72 @@ document.addEventListener("DOMContentLoaded", () => {
             data.WAR47
         );
     
+    }
+
+    function getFilteredRecords(){
+    
+        let records = [...allData];
+    
+        const keyword =
+            searchBox.value.trim().toLowerCase();
+    
+        const selectedCluster =
+            clusterFilter.value;
+    
+        const selectedAge =
+            ageFilter.value;
+    
+        const selectedLastMile =
+            lastMileFilter.value;
+    
+        const selectedStatus =
+            statusFilter.value;
+    
+        if(keyword !== ""){
+            records = records.filter(r =>
+                (r[CX_NAME] || "")
+                .toLowerCase()
+                .includes(keyword)
+            );
+        }
+    
+        if(selectedCluster !== "ALL"){
+            records = records.filter(r =>
+                r[CLUSTER] === selectedCluster
+            );
+        }
+    
+        if(selectedAge !== "ALL"){
+            records = records.filter(r =>
+                (r["E.AGE"] || "").trim() === selectedAge
+            );
+        }
+    
+        if(selectedLastMile !== "ALL"){
+            records = records.filter(r =>
+                (r["ACTIVITY"] || "").trim() === selectedLastMile
+            );
+        }
+    
+        if(selectedStatus === "COMPLETED"){
+            records = records.filter(r =>
+                (r["F.STAT"] || "").trim() === "COMPLETED"
+            );
+        }
+    
+        else if(selectedStatus === "HANDLED"){
+            records = records.filter(r =>
+                (r["F.STAT"] || "").trim() === "HANDLED"
+            );
+        }
+    
+        else if(selectedStatus === "UNHANDLED"){
+            records = records.filter(r =>
+                (r["F.STAT"] || "").trim() === "PENDING/UNHANDLED"
+            );
+        }
+    
+        return records;
     }
     
     function buildTable(){
@@ -782,6 +849,39 @@ document.addEventListener("DOMContentLoaded", () => {
     
     lastMileFilter.addEventListener("change", buildTable);
 
+    exportButton.addEventListener("click", () => {
+    
+        const records =
+            getFilteredRecords();
+    
+        const csv =
+            Papa.unparse(records);
+    
+        const blob =
+            new Blob(
+                [csv],
+                { type: "text/csv;charset=utf-8;" }
+            );
+    
+        const link =
+            document.createElement("a");
+    
+        const url =
+            URL.createObjectURL(blob);
+    
+        link.href = url;
+    
+        link.download =
+            "dispatch_export.csv";
+    
+        document.body.appendChild(link);
+    
+        link.click();
+    
+        document.body.removeChild(link);
+    
+    });
+    
     clearButton.addEventListener("click", () => {
     
         searchBox.value = "";
