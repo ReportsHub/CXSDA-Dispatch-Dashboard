@@ -223,7 +223,7 @@ thead th{
 thead tr:nth-child(1) th{
     position:sticky;
     top:0;
-    z-index:50;
+    z-index:5;
     background:#cfe2f3;
 }
 
@@ -256,25 +256,17 @@ tbody td.first-col{
     box-shadow:3px 0 6px rgba(0,0,0,.10);
 }
 
-
-
 /* Top-left corner */
 
 thead th.corner{
-
     position:sticky;
-
     top:0;
     left:0;
-
-    z-index:9999;
-
+    z-index:10000;
     background:#efe7c5;
-
     min-width:220px;
     width:220px;
     max-width:220px;
-
     border-right:1px solid #cfcfcf;
     border-bottom:1px solid #cfcfcf;
 }
@@ -285,44 +277,28 @@ thead th.corner{
    HEADER COLORS
 ========================================== */
 
-
 .group-header{
-
     font-size:13px;
-
     font-weight:bold;
-
+    position: relative;
+    z-index: 1;
 }
-
 
 .dispatched{
-
     background:#cfe2f3;
-
 }
-
 
 .completed{
-
     background:#d9ead3;
-
 }
-
 
 .handled{
-
     background:#d0e0e3;
-
 }
-
 
 .unhandled{
-
     background:#f4cccc;
-
 }
-
-
 
 /* ==========================================
    SUBHEADERS
