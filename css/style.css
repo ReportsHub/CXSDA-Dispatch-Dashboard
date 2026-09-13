@@ -677,7 +677,7 @@ tbody td:nth-child(35){
 /* CUSTOMER ADDRESS */
 .cluster-details th:nth-child(7),
 .cluster-details td:nth-child(7){
-    width:500px;
+    width:300px;
     text-align:left;
     overflow-wrap:break-word;
     line-height:1.4;
