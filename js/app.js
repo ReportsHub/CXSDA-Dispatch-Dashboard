@@ -13,9 +13,74 @@ document.addEventListener("DOMContentLoaded", () => {
     let CX_NAME = "";
 
     // ==========================================
+    // COUNT SO TYPES
+    // ==========================================
+    function getCounts(records){
+
+        const result = {
+            NC: 0,
+            AO: 0,
+            IPTV: 0,
+            NWUP: 0,
+            RELOC: 0,
+            AS: 0,
+            WAR0: 0,
+            WAR1: 0,
+            WAR2: 0,
+            WAR3: 0,
+            WAR47: 0
+        };
+
+        records.forEach(r => {
+
+            const soType = (r["SO TYPE"] || "").trim();
+            const age = (r["E.AGE"] || "").trim();
+
+            switch(soType){
+
+                case "NC":
+                    result.NC++;
+                    break;
+
+                case "A/O":
+                    result.AO++;
+                    break;
+
+                case "IPTV":
+                    result.IPTV++;
+                    break;
+
+                case "NWUP":
+                    result.NWUP++;
+                    break;
+
+                case "RELOC":
+                    result.RELOC++;
+                    break;
+
+                case "AS":
+                    result.AS++;
+                    break;
+
+                case "WAR":
+
+                    if(age === "0 D") result.WAR0++;
+                    else if(age === "1 D") result.WAR1++;
+                    else if(age === "2 D") result.WAR2++;
+                    else if(age === "3 D") result.WAR3++;
+                    else if(age === "4-7 D") result.WAR47++;
+
+                    break;
+            }
+
+        });
+
+        return result;
+    }
+
+    // ==========================================
     // LOAD CSV
     // ==========================================
-
     Papa.parse("data/dispatch.csv", {
 
         download: true,
@@ -24,30 +89,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         complete: function(results){
 
-            console.log(results);
-        
             allData = results.data.map(row => {
-        
+
                 const cleaned = {};
-        
+
                 Object.keys(row).forEach(key => {
                     cleaned[key.replace(/\uFEFF/g, "").trim()] = row[key];
                 });
-        
+
                 return cleaned;
-        
             });
-        
+
             CLUSTER = "CLUSTER";
             CX_NAME = "CX_NAME";
-        
+
             console.log("Rows:", allData.length);
-            console.log("First row:", allData[0]);
-        
+
             populateClusterFilter();
             buildTable();
-        
         },
+
         error: function(err){
             console.error(err);
         }
@@ -55,9 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================
-    // POPULATE CLUSTER DROPDOWN
+    // POPULATE CLUSTER FILTER
     // ==========================================
-
     function populateClusterFilter(){
 
         clusterFilter.innerHTML =
@@ -69,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         clusters.sort();
 
-        clusters.forEach(cluster=>{
+        clusters.forEach(cluster => {
 
             const option = document.createElement("option");
 
@@ -85,76 +145,105 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // BUILD TABLE
     // ==========================================
-
     function buildTable(){
 
-        tbody.innerHTML="";
+        tbody.innerHTML = "";
 
         const keyword = searchBox.value.trim().toLowerCase();
         const selectedCluster = clusterFilter.value;
 
-        const clusters=[...new Set(
-            allData.map(r=>r[CLUSTER])
+        const clusters = [...new Set(
+            allData.map(r => r[CLUSTER])
         )].filter(Boolean);
 
-        clusters.forEach(cluster=>{
+        clusters.forEach(cluster => {
 
             let technicians = allData.filter(r =>
                 r[CLUSTER] === cluster
             );
 
             technicians = [...new Map(
-
-                technicians.map(item=>[
+                technicians.map(item => [
                     item[CX_NAME],
                     item
                 ])
-
             ).values()];
 
-            technicians = technicians.filter(person=>{
+            technicians = technicians.filter(person => {
 
                 const searchMatch =
-                    keyword==="" ||
-                    (person[CX_NAME] || "").toLowerCase().includes(keyword);
+                    keyword === "" ||
+                    (person[CX_NAME] || "")
+                        .toLowerCase()
+                        .includes(keyword);
 
                 const clusterMatch =
-                    selectedCluster==="ALL" ||
-                    cluster===selectedCluster;
+                    selectedCluster === "ALL" ||
+                    cluster === selectedCluster;
 
                 return searchMatch && clusterMatch;
 
             });
 
-            if(technicians.length===0)
+            if(technicians.length === 0)
                 return;
 
-            const clusterRow=document.createElement("tr");
+            // ========================
+            // CLUSTER HEADER ROW
+            // ========================
+            const clusterRow = document.createElement("tr");
 
-            clusterRow.className="cluster-row";
+            clusterRow.className = "cluster-row";
 
-            clusterRow.innerHTML=`
-
+            clusterRow.innerHTML = `
                 <td class="first-col">${cluster}</td>
                 <td colspan="44">Cluster Totals</td>
-
             `;
 
             tbody.appendChild(clusterRow);
 
-            technicians.forEach(person=>{
+            // ========================
+            // TECHNICIAN ROWS
+            // ========================
+            technicians.forEach(person => {
 
-                const row=document.createElement("tr");
+                const techRecords = allData.filter(r =>
+                    r[CX_NAME] === person[CX_NAME]
+                );
 
-                row.innerHTML=`
+                const dispatched = getCounts(techRecords);
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
 
                     <td class="first-col">
                         ${person[CX_NAME]}
                     </td>
 
-                    <td colspan="44">
-                        Loading...
-                    </td>
+                    <!-- DISPATCHED -->
+
+                    <td>${dispatched.NC}</td>
+                    <td>${dispatched.AO}</td>
+                    <td>${dispatched.IPTV}</td>
+                    <td>${dispatched.NWUP}</td>
+                    <td>${dispatched.RELOC}</td>
+                    <td>${dispatched.AS}</td>
+
+                    <td>${dispatched.WAR0}</td>
+                    <td>${dispatched.WAR1}</td>
+                    <td>${dispatched.WAR2}</td>
+                    <td>${dispatched.WAR3}</td>
+                    <td>${dispatched.WAR47}</td>
+
+                    <!-- COMPLETED -->
+                    <td colspan="11"></td>
+
+                    <!-- HANDLED -->
+                    <td colspan="11"></td>
+
+                    <!-- UNHANDLED -->
+                    <td colspan="11"></td>
 
                 `;
 
@@ -169,16 +258,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     // EVENTS
     // ==========================================
-
     searchBox.addEventListener("keyup", buildTable);
+
     clusterFilter.addEventListener("change", buildTable);
+
     statusFilter.addEventListener("change", buildTable);
 
-    clearButton.addEventListener("click",()=>{
+    clearButton.addEventListener("click", () => {
 
-        searchBox.value="";
-        clusterFilter.value="ALL";
-        statusFilter.value="ALL";
+        searchBox.value = "";
+        clusterFilter.value = "ALL";
+        statusFilter.value = "ALL";
 
         buildTable();
 
