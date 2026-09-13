@@ -384,72 +384,42 @@ thead th.corner{
    HOVER
 ========================================== */
 
-
 tbody tr:hover td{
-
-    background:#fff8dc;
-
+    background:#eaf4ff !important;
 }
-
 
 tbody tr:hover td.first-col{
-
-    background:#ffe699;
-
+    background:#cfe2f3 !important;
+    font-weight:bold;
 }
-
-
 
 /* ==========================================
    STRIPES
 ========================================== */
-
-
 tbody tr:nth-child(even):not(.cluster-row){
-
     background:#fafafa;
-
 }
-
-
 
 /* ==========================================
    SCROLLBAR
 ========================================== */
-
-
 .table-container::-webkit-scrollbar{
-
     height:12px;
-
     width:12px;
-
 }
-
 
 .table-container::-webkit-scrollbar-track{
-
     background:#ececec;
-
 }
-
 
 .table-container::-webkit-scrollbar-thumb{
-
     background:#9b9b9b;
-
     border-radius:20px;
-
 }
-
 
 .table-container::-webkit-scrollbar-thumb:hover{
-
     background:#6f6f6f;
-
 }
-
-
 
 /* ==========================================
    RESPONSIVE
