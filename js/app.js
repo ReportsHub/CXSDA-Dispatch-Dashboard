@@ -483,7 +483,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td>${showValue(completed.AS)}</td>
                 
                 <td>${showValue(completed.WAR0)}</td>
-                <td>${showValue(completed.WAR1)}</td>
+                <td
+                    class="drilldown"
+                    data-status="COMPLETED"
+                    data-sotype="WAR"
+                    data-age="1 D"
+                >
+                    ${showValue(completed.WAR1)}
+                </td>
                 <td>${showValue(completed.WAR2)}</td>
                 <td>${showValue(completed.WAR3)}</td>
                 <td>${showValue(completed.WAR47)}</td>
@@ -522,14 +529,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 tbody.appendChild(row);
 
-                                const cells = row.querySelectorAll("td");
+                const drillCells =
+                    row.querySelectorAll(".drilldown");
                 
-                cells.forEach(cell => {
+                drillCells.forEach(cell => {
                 
                     cell.addEventListener("dblclick", () => {
                 
-                        alert(
-                            `${person[CX_NAME]} clicked`
+                        const status =
+                            cell.dataset.status;
+                
+                        const soType =
+                            cell.dataset.sotype;
+                
+                        const age =
+                            cell.dataset.age;
+                
+                        const records =
+                            techRecords.filter(r => {
+                
+                                return (
+                                    (r["F.STAT"] || "").trim() === status &&
+                                    (r["SO TYPE"] || "").trim() === soType &&
+                                    (r["E.AGE"] || "").trim() === age
+                                );
+                
+                            });
+                
+                        showDrillDown(
+                            `${person[CX_NAME]} | ${status} | ${soType} | ${age}`,
+                            records
                         );
                 
                     });
