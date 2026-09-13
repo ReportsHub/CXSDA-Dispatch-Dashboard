@@ -747,15 +747,12 @@ tbody td:nth-child(35){
 }
 
 .age-dropdown-content label{
-
-    display:block;
-
+    display:flex;
+    align-items:center;
+    gap:8px;
     padding:8px 12px;
-
     font-size:14px;
-
     cursor:pointer;
-
     white-space:nowrap;
 }
 
@@ -764,5 +761,7 @@ tbody td:nth-child(35){
 }
 
 .age-dropdown-content input[type="checkbox"]{
-    margin-right:8px;
+    width:16px;
+    height:16px;
+    margin:0;
 }
