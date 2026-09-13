@@ -223,8 +223,13 @@ thead th{
 thead tr:nth-child(1) th{
     position:sticky;
     top:0;
-    z-index:5;
+    z-index:20;
     background:#cfe2f3;
+}
+
+/* NEW */
+thead tr:nth-child(1) th:not(.corner){
+    z-index:1;
 }
 
 /* Row 2 */
@@ -262,7 +267,7 @@ thead th.corner{
     position:sticky;
     top:0;
     left:0;
-    z-index:10000;
+    z-index:9999;
     background:#efe7c5;
     min-width:220px;
     width:220px;
