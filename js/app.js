@@ -143,7 +143,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     function populateClusterFilter(){
 
-        function populateAgeFilter(){
+        clusterFilter.innerHTML =
+            '<option value="ALL">All Clusters</option>';
+
+        const clusters = clusterOrder.filter(cluster =>
+            allData.some(r => r[CLUSTER] === cluster)
+        );
+
+        clusters.forEach(cluster => {
+
+            const option = document.createElement("option");
+
+            option.value = cluster;
+            option.textContent = cluster;
+
+            clusterFilter.appendChild(option);
+
+        });
+
+    }
+
+    function populateAgeFilter(){
 
         ageFilter.innerHTML =
             '<option value="ALL">All Aging</option>';
@@ -191,26 +211,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
         });
     
-    }
-
-        clusterFilter.innerHTML =
-            '<option value="ALL">All Clusters</option>';
-
-        const clusters = clusterOrder.filter(cluster =>
-            allData.some(r => r[CLUSTER] === cluster)
-        );
-
-        clusters.forEach(cluster => {
-
-            const option = document.createElement("option");
-
-            option.value = cluster;
-            option.textContent = cluster;
-
-            clusterFilter.appendChild(option);
-
-        });
-
     }
 
     // ==========================================
