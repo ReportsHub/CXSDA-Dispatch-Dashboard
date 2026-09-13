@@ -506,8 +506,8 @@ tbody td:nth-child(35){
 .modal-content{
     position:relative;
     background:white;
-    width:98%;
-    max-width:1400px;
+    width:99%;
+    max-width:none;
     max-height:85vh;
     overflow-y:auto;
     overflow-x:auto;
@@ -563,73 +563,19 @@ tbody td:nth-child(35){
     overflow-wrap:break-word;
 }
 
-/* WO ID */
-.modal-content th:nth-child(1),
-.modal-content td:nth-child(1){
-    width:110px;
-    text-align:center;
-}
-
-/* CX NAME */
-.modal-content th:nth-child(2),
-.modal-content td:nth-child(2){
-    width:180px;
-    text-align:left;
-}
-
-/* E.AGE */
-.modal-content th:nth-child(3),
-.modal-content td:nth-child(3){
-    width:70px;
-    text-align:center;
-}
-
-/* ACTIVITY */
-.modal-content th:nth-child(4),
-.modal-content td:nth-child(4){
-    width:90px;
-    text-align:center;
-}
-
-/* LAST MILE */
-.modal-content th:nth-child(5),
-.modal-content td:nth-child(5){
-    width:100px;
-    text-align:center;
-}
-
-/* CUSTOMER NAME */
-.modal-content th:nth-child(6),
-.modal-content td:nth-child(6){
-    width:280px;
-    text-align:left;
-}
-
-/* CUSTOMER ADDRESS */
-.modal-content th:nth-child(7),
-.modal-content td:nth-child(7){
-    width:450px;
-    text-align:left;
-}
-
-/* ACCOUNT NUMBER */
-.modal-content th:nth-child(8),
-.modal-content td:nth-child(8){
-    width:140px;
-    text-align:center;
-}
-
 /* ==========================================
    TECHNICIAN DRILLDOWN
 ========================================== */
 
 .tech-details{
-    min-width:1600px;
+    min-width:1800px;
 }
 
+/* WO ID */
 .tech-details th:nth-child(1),
 .tech-details td:nth-child(1){
     width:120px;
+    text-align:center;
 }
 
 /* E.AGE */
@@ -642,28 +588,28 @@ tbody td:nth-child(35){
 /* ACTIVITY */
 .tech-details th:nth-child(3),
 .tech-details td:nth-child(3){
-    width:90px;
+    width:100px;
     text-align:center;
 }
 
 /* LAST MILE */
 .tech-details th:nth-child(4),
 .tech-details td:nth-child(4){
-    width:100px;
+    width:120px;
     text-align:center;
 }
 
 /* CUSTOMER NAME */
 .tech-details th:nth-child(5),
 .tech-details td:nth-child(5){
-    width:300px;
+    width:350px;
     text-align:left;
 }
 
 /* CUSTOMER ADDRESS */
 .tech-details th:nth-child(6),
 .tech-details td:nth-child(6){
-    width:700px;
+    width:900px;
     text-align:left;
 }
 
@@ -679,55 +625,60 @@ tbody td:nth-child(35){
 ========================================== */
 
 .cluster-details{
-    min-width:1400px;
+    min-width:2200px;
 }
 
+/* WO ID */
 .cluster-details th:nth-child(1),
 .cluster-details td:nth-child(1){
-    width:110px;
+    width:120px;
 }
 
 /* CX NAME */
 .cluster-details th:nth-child(2),
 .cluster-details td:nth-child(2){
-    width:180px;
+    width:250px;
     text-align:left;
 }
 
 /* E.AGE */
 .cluster-details th:nth-child(3),
 .cluster-details td:nth-child(3){
-    width:70px;
+    width:80px;
+    text-align:center;
 }
 
 /* ACTIVITY */
 .cluster-details th:nth-child(4),
 .cluster-details td:nth-child(4){
-    width:90px;
+    width:100px;
+    text-align:center;
 }
 
 /* LAST MILE */
 .cluster-details th:nth-child(5),
 .cluster-details td:nth-child(5){
-    width:100px;
+    width:120px;
+    text-align:center;
 }
 
 /* CUSTOMER NAME */
 .cluster-details th:nth-child(6),
 .cluster-details td:nth-child(6){
-    width:250px;
+    width:350px;
     text-align:left;
 }
 
 /* CUSTOMER ADDRESS */
 .cluster-details th:nth-child(7),
 .cluster-details td:nth-child(7){
-    width:500px;
+    width:1000px;
     text-align:left;
 }
 
 /* ACCOUNT NUMBER */
 .cluster-details th:nth-child(8),
 .cluster-details td:nth-child(8){
-    width:150px;
+    width:180px;
+    text-align:center;
 }
