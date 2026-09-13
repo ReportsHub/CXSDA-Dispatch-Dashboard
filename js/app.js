@@ -214,41 +214,101 @@ document.addEventListener("DOMContentLoaded", () => {
                 const techRecords = allData.filter(r =>
                     r[CX_NAME] === person[CX_NAME]
                 );
-
-                const dispatched = getCounts(techRecords);
+                
+                // DISPATCHED
+                const dispatched = getCounts(
+                    techRecords
+                );
+                
+                // COMPLETED
+                const completed = getCounts(
+                    techRecords.filter(r =>
+                        (r["F.STAT"] || "").trim() === "COMPLETED"
+                    )
+                );
+                
+                // HANDLED
+                const handled = getCounts(
+                    techRecords.filter(r =>
+                        (r["F.STAT"] || "").trim() === "HANDLED"
+                    )
+                );
+                
+                // UNHANDLED
+                const unhandled = getCounts(
+                    techRecords.filter(r =>
+                        (r["F.STAT"] || "").trim() === "PENDING/UNHANDLED"
+                    )
+                );
 
                 const row = document.createElement("tr");
 
                 row.innerHTML = `
-
-                    <td class="first-col">
-                        ${person[CX_NAME]}
-                    </td>
-
-                    <!-- DISPATCHED -->
-
-                    <td>${showValue(dispatched.NC)}</td>
-                    <td>${showValue(dispatched.AO)}</td>
-                    <td>${showValue(dispatched.IPTV)}</td>
-                    <td>${showValue(dispatched.NWUP)}</td>
-                    <td>${showValue(dispatched.RELOC)}</td>
-                    <td>${showValue(dispatched.AS)}</td>
-                    
-                    <td>${showValue(dispatched.WAR0)}</td>
-                    <td>${showValue(dispatched.WAR1)}</td>
-                    <td>${showValue(dispatched.WAR2)}</td>
-                    <td>${showValue(dispatched.WAR3)}</td>
-                    <td>${showValue(dispatched.WAR47)}</td>
-
-                    <!-- COMPLETED -->
-                    <td colspan="11"></td>
-
-                    <!-- HANDLED -->
-                    <td colspan="11"></td>
-
-                    <!-- UNHANDLED -->
-                    <td colspan="11"></td>
-
+                
+                <td class="first-col">
+                    ${person[CX_NAME]}
+                </td>
+                
+                <!-- DISPATCHED -->
+                
+                <td>${showValue(dispatched.NC)}</td>
+                <td>${showValue(dispatched.AO)}</td>
+                <td>${showValue(dispatched.IPTV)}</td>
+                <td>${showValue(dispatched.NWUP)}</td>
+                <td>${showValue(dispatched.RELOC)}</td>
+                <td>${showValue(dispatched.AS)}</td>
+                
+                <td>${showValue(dispatched.WAR0)}</td>
+                <td>${showValue(dispatched.WAR1)}</td>
+                <td>${showValue(dispatched.WAR2)}</td>
+                <td>${showValue(dispatched.WAR3)}</td>
+                <td>${showValue(dispatched.WAR47)}</td>
+                
+                <!-- COMPLETED -->
+                
+                <td>${showValue(completed.NC)}</td>
+                <td>${showValue(completed.AO)}</td>
+                <td>${showValue(completed.IPTV)}</td>
+                <td>${showValue(completed.NWUP)}</td>
+                <td>${showValue(completed.RELOC)}</td>
+                <td>${showValue(completed.AS)}</td>
+                
+                <td>${showValue(completed.WAR0)}</td>
+                <td>${showValue(completed.WAR1)}</td>
+                <td>${showValue(completed.WAR2)}</td>
+                <td>${showValue(completed.WAR3)}</td>
+                <td>${showValue(completed.WAR47)}</td>
+                
+                <!-- HANDLED -->
+                
+                <td>${showValue(handled.NC)}</td>
+                <td>${showValue(handled.AO)}</td>
+                <td>${showValue(handled.IPTV)}</td>
+                <td>${showValue(handled.NWUP)}</td>
+                <td>${showValue(handled.RELOC)}</td>
+                <td>${showValue(handled.AS)}</td>
+                
+                <td>${showValue(handled.WAR0)}</td>
+                <td>${showValue(handled.WAR1)}</td>
+                <td>${showValue(handled.WAR2)}</td>
+                <td>${showValue(handled.WAR3)}</td>
+                <td>${showValue(handled.WAR47)}</td>
+                
+                <!-- UNHANDLED -->
+                
+                <td>${showValue(unhandled.NC)}</td>
+                <td>${showValue(unhandled.AO)}</td>
+                <td>${showValue(unhandled.IPTV)}</td>
+                <td>${showValue(unhandled.NWUP)}</td>
+                <td>${showValue(unhandled.RELOC)}</td>
+                <td>${showValue(unhandled.AS)}</td>
+                
+                <td>${showValue(unhandled.WAR0)}</td>
+                <td>${showValue(unhandled.WAR1)}</td>
+                <td>${showValue(unhandled.WAR2)}</td>
+                <td>${showValue(unhandled.WAR3)}</td>
+                <td>${showValue(unhandled.WAR47)}</td>
+                
                 `;
 
                 tbody.appendChild(row);
