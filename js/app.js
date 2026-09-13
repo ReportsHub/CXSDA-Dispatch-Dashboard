@@ -5,7 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchBox = document.getElementById("searchBox");
     const clusterFilter = document.getElementById("clusterFilter");
     const statusFilter = document.getElementById("statusFilter");
+    const detailModal = document.getElementById("detailModal");
+    const modalBody = document.getElementById("modalBody");
+    const closeModal = document.getElementById("closeModal");
     const clearButton = document.getElementById("clearFilters");
+
+    closeModal.addEventListener(
+        "click",
+        () => detailModal.style.display = "none"
+    );
 
     let allData = [];
 
@@ -155,6 +163,54 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================
     function showValue(value){
         return value === 0 ? "" : value;
+    }
+
+    function showDrillDown(title, records){
+
+        let html = `
+            <h3>${title}</h3>
+            <p>
+                Total Records:
+                <b>${records.length}</b>
+            </p>
+    
+            <table>
+    
+                <thead>
+                    <tr>
+                        <th>WO ID</th>
+                        <th>Customer Name</th>
+                        <th>F.STAT</th>
+                        <th>SO TYPE</th>
+                        <th>E.AGE</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+        `;
+    
+        records.forEach(r => {
+    
+            html += `
+                <tr>
+                    <td>${r["Work Order ID"] || ""}</td>
+                    <td>${r["Customer Name"] || ""}</td>
+                    <td>${r["F.STAT"] || ""}</td>
+                    <td>${r["SO TYPE"] || ""}</td>
+                    <td>${r["E.AGE"] || ""}</td>
+                </tr>
+            `;
+    
+        });
+    
+        html += `
+                </tbody>
+            </table>
+        `;
+    
+        modalBody.innerHTML = html;
+    
+        detailModal.style.display = "block";
     }
 
     function getTotal(data){
@@ -465,6 +521,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
 
                 tbody.appendChild(row);
+
+                                const cells = row.querySelectorAll("td");
+                
+                cells.forEach(cell => {
+                
+                    cell.addEventListener("dblclick", () => {
+                
+                        alert(
+                            `${person[CX_NAME]} clicked`
+                        );
+                
+                    });
+                
+                });
 
             });
 
