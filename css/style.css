@@ -756,3 +756,18 @@ tbody td:nth-child(35){
 .drill-export-btn:hover{
     background:#16395b;
 }
+
+/* ==========================================
+   DRILLDOWN NAME LINKS
+========================================== */
+.technician-name,
+.cluster-name{
+    cursor:pointer;
+}
+
+.technician-name:hover,
+.cluster-name:hover{
+    text-decoration:underline;
+    color:#1f4e79;
+    font-weight:600;
+}
