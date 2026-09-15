@@ -461,7 +461,7 @@ tbody td:nth-child(35){
 .modal{
     display:none;
     position:fixed;
-    z-index:9999;
+    z-index:200000;
     left:0;
     top:0;
     width:100%;
