@@ -259,7 +259,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <th>WO ID</th>
                     
                         ${showCXName ? "<th>CX Name</th>" : ""}
-                    
+
+                        <th>Status</th>
                         <th>E.Age</th>
                         <th>Activity</th>
                         <th>Last Mile</th>
@@ -278,6 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr>
                     <td>${r["Work Order ID"] || ""}</td>
                     ${showCXName ? `<td>${r["CX_NAME"] || ""}</td>` : ""}
+                    <td>${r["F.STAT"] || ""}</td>
                     <td>${r["E.AGE"] || ""}</td>
                     <td>${r["SO TYPE"] || ""}</td>
                     <td>${r["ACTIVITY"] || ""}</td>
