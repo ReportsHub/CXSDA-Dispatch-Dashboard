@@ -828,3 +828,16 @@ tbody td:nth-child(35){
     padding-bottom:10px;
     border-bottom:1px solid #d9d9d9;
 }
+
+.drill-table-container{
+    max-height:60vh;
+    overflow-y:auto;
+}
+
+.drill-table-container thead th{
+    position:sticky;
+    top:0;
+    z-index:500;
+    background:#1f4e79;
+    color:white;
+}
