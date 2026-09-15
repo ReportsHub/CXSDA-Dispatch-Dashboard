@@ -290,7 +290,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                     : "status-unhandled"
                             }
                         ">
-                            ${r["F.STAT"] || ""}
+                            ${
+                                (r["F.STAT"] || "") === "PENDING/UNHANDLED"
+                                    ? "UNHANDLED"
+                                    : (r["F.STAT"] || "")
+                            }
                         </span>
                     </td>
                     <td>${r["E.AGE"] || ""}</td>
