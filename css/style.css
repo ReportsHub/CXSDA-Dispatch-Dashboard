@@ -513,8 +513,8 @@ tbody td:nth-child(35){
     background:#1f4e79;
     color:white;
     position:sticky;
-    top:95;
-    z-index:20;
+    top:105;
+    z-index:101;
 }
 
 .modal-content td,
@@ -823,7 +823,8 @@ tbody td:nth-child(35){
     position:sticky;
     top:0;
     background:white;
-    z-index:30;
+    z-index:100;
     padding-bottom:10px;
     border-bottom:1px solid #d9d9d9;
+    min-height:105px;
 }
