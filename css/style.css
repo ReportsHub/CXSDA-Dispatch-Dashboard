@@ -513,7 +513,7 @@ tbody td:nth-child(35){
     background:#1f4e79;
     color:white;
     position:sticky;
-    top:105;
+    top:115px;
     z-index:101;
 }
 
@@ -822,8 +822,8 @@ tbody td:nth-child(35){
 .modal-header-section{
     position:sticky;
     top:0;
-    background:white;
-    z-index:100;
+    background:#ffffff;
+    z-index:201;
     padding-bottom:10px;
     border-bottom:1px solid #d9d9d9;
     min-height:105px;
