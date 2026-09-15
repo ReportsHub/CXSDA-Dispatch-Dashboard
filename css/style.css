@@ -546,44 +546,51 @@ tbody td:nth-child(35){
     width:8%;
 }
 
-/* E.AGE */
+/* STATUS */
 .tech-details th:nth-child(2),
 .tech-details td:nth-child(2){
+   width:8%;
+   text-align:center;
+}
+
+/* E.AGE */
+.tech-details th:nth-child(3),
+.tech-details td:nth-child(3){
     width:5%;
     text-align:center;
 }
 
 /* ACTIVITY */
-.tech-details th:nth-child(3),
-.tech-details td:nth-child(3){
+.tech-details th:nth-child(4),
+.tech-details td:nth-child(4){
     width:6%;
     text-align:center;
 }
 
 /* LAST MILE */
-.tech-details th:nth-child(4),
-.tech-details td:nth-child(4){
+.tech-details th:nth-child(5),
+.tech-details td:nth-child(5){
     width:8%;
     text-align:center;
 }
 
 /* CUSTOMER NAME */
-.tech-details th:nth-child(5),
-.tech-details td:nth-child(5){
+.tech-details th:nth-child(6),
+.tech-details td:nth-child(6){
     width:18%;
     text-align:left;
 }
 
 /* CUSTOMER ADDRESS */
-.tech-details th:nth-child(6),
-.tech-details td:nth-child(6){
+.tech-details th:nth-child(7),
+.tech-details td:nth-child(7){
     width:40%;
     text-align:left;
 }
 
 /* ACCOUNT NUMBER */
-.tech-details th:nth-child(7),
-.tech-details td:nth-child(7){
+.tech-details th:nth-child(8),
+.tech-details td:nth-child(8){
     width:15%;
     text-align:center;
 }
@@ -612,37 +619,44 @@ tbody td:nth-child(35){
     text-align:left;
 }
 
-/* E.AGE */
+/* STATUS */
 .cluster-details th:nth-child(3),
 .cluster-details td:nth-child(3){
+   width:8%;
+   text-align:center;
+}
+
+/* E.AGE */
+.cluster-details th:nth-child(4),
+.cluster-details td:nth-child(4){
     width:5%;
     text-align:center;
 }
 
 /* ACTIVITY */
-.cluster-details th:nth-child(4),
-.cluster-details td:nth-child(4){
+.cluster-details th:nth-child(5),
+.cluster-details td:nth-child(5){
     width:6%;
     text-align:center;
 }
 
 /* LAST MILE */
-.cluster-details th:nth-child(5),
-.cluster-details td:nth-child(5){
+.cluster-details th:nth-child(6),
+.cluster-details td:nth-child(6){
     width:7%;
     text-align:center;
 }
 
 /* CUSTOMER NAME */
-.cluster-details th:nth-child(6),
-.cluster-details td:nth-child(6){
+.cluster-details th:nth-child(7),
+.cluster-details td:nth-child(7){
     width:18%;
     text-align:left;
 }
 
 /* CUSTOMER ADDRESS */
-.cluster-details th:nth-child(7),
-.cluster-details td:nth-child(7){
+.cluster-details th:nth-child(8),
+.cluster-details td:nth-child(8){
     width:30%;
     text-align:left;
     overflow-wrap:break-word;
@@ -652,8 +666,8 @@ tbody td:nth-child(35){
 }
 
 /* ACCOUNT NUMBER */
-.cluster-details th:nth-child(8),
-.cluster-details td:nth-child(8){
+.cluster-details th:nth-child(9),
+.cluster-details td:nth-child(9){
     width:10%;
     text-align:center;
 }
@@ -770,4 +784,34 @@ tbody td:nth-child(35){
     text-decoration:underline;
     color:#1f4e79;
     font-weight:600;
+}
+
+/* ==========================================
+   STATUS BADGES
+========================================== */
+.status-badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:4px;
+    font-size:11px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+/* COMPLETED */
+.status-completed{
+    background:#d9ead3;
+    color:#2e7d32;
+}
+
+/* HANDLED */
+.status-handled{
+    background:#d9eaf7;
+    color:#1565c0;
+}
+
+/* PENDING / UNHANDLED */
+.status-unhandled{
+    background:#f4cccc;
+    color:#c62828;
 }
