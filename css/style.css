@@ -128,15 +128,6 @@ table{
     min-width:2200px;
 }
 
-thead{
-    position:relative;
-    z-index:100;
-}
-
-thead th{
-    background-clip:padding-box;
-}
-
 th,
 td{
 
@@ -183,56 +174,97 @@ thead th{
 }
 
 /* Row 1 */
+
 thead tr:nth-child(1) th{
+
     position:sticky;
+
     top:0;
-    z-index:999;
+
+    z-index:20;
+
     background:#cfe2f3;
+
 }
+
+
 
 /* Row 2 */
+
 thead tr:nth-child(2) th{
+
     position:sticky;
+
     top:30px;
-    z-index:800;
+
+    z-index:19;
+
     background:#efe7c5;
+
 }
 
+
+
 /* Row 3 */
+
 thead tr:nth-child(3) th{
+
     position:sticky;
+
     top:60px;
-    z-index:700;
+
+    z-index:18;
+
     background:#efe7c5;
+
 }
 
 /* ==========================================
    STICKY FIRST COLUMN
 ========================================== */
+
+
 tbody td.first-col{
+
     position:sticky;
+
     left:0;
-    z-index:100;
+
+    z-index:10;
+
     background:white;
+
 }
 
+
+
 /* Top-left corner */
+
 thead th.corner{
+
     position:sticky;
+
     top:0;
     left:0;
-    z-index:2000;
+
+    z-index:1000;
+
     background:#efe7c5;
+
     min-width:220px;
     width:220px;
     max-width:220px;
+
+    border-right:1px solid #cfcfcf;
+    border-bottom:1px solid #cfcfcf;
 }
+
+
 
 /* ==========================================
    HEADER COLORS
 ========================================== */
 .group-header{
-    position:sticky;
     font-size:13px;
     font-weight:bold;
     border-left:2px solid #1f4e79;
@@ -240,29 +272,49 @@ thead th.corner{
 }
 
 .dispatched{
+
     background:#cfe2f3;
+
 }
+
 
 .completed{
+
     background:#d9ead3;
+
 }
+
 
 .handled{
+
     background:#d0e0e3;
+
 }
 
+
 .unhandled{
+
     background:#f4cccc;
+
 }
+
+
 
 /* ==========================================
    SUBHEADERS
 ========================================== */
+
+
 .subheader th,
 .subheader{
+
     background:#efe7c5;
+
     font-weight:bold;
+
 }
+
+
 
 /* ==========================================
    CLUSTER ROW
