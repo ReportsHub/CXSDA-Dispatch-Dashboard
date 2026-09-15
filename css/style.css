@@ -471,7 +471,7 @@ tbody td:nth-child(35){
 
 .modal-content{
     position:relative;
-    background:white;
+    background:#ffffff;
     width:99%;
     max-width:none;
     max-height:85vh;
@@ -509,12 +509,12 @@ tbody td:nth-child(35){
     table-layout:fixed;
 }
 
-.modal-content th{
+.modal-content thead th{
+    position:sticky;
+    top:120px;
     background:#1f4e79;
     color:white;
-    position:sticky;
-    top:115px;
-    z-index:101;
+    z-index:300;
 }
 
 .modal-content td,
@@ -823,8 +823,7 @@ tbody td:nth-child(35){
     position:sticky;
     top:0;
     background:#ffffff;
-    z-index:201;
+    z-index:400;
     padding-bottom:10px;
     border-bottom:1px solid #d9d9d9;
-    min-height:105px;
 }
