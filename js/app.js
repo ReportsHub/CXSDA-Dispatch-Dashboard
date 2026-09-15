@@ -611,7 +611,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             clusterRow.innerHTML = `
 
-            <td class="first-col">${cluster}</td>
+            <td class="first-col cluster-name">
+                ${cluster}
+            </td>
             
             <!-- DISPATCHED -->
             ${createDrillCell(clusterDispatched.NC,"DISPATCHED","NC")}
@@ -671,6 +673,17 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             tbody.appendChild(clusterRow);
+
+            clusterRow.querySelector(".cluster-name")
+            .addEventListener("dblclick", () => {
+            
+                showDrillDown(
+                    `${cluster}`,
+                    clusterRecords,
+                    true
+                );
+            
+            });
 
             const clusterDrillCells =
                 clusterRow.querySelectorAll(".drilldown");
@@ -777,7 +790,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 row.innerHTML = `
                 
-                <td class="first-col">
+                <td class="first-col technician-name">
                     ${person[CX_NAME]}
                 </td>
                 
@@ -840,6 +853,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
 
                 tbody.appendChild(row);
+
+                row.querySelector(".technician-name")
+                .addEventListener("dblclick", () => {
+                
+                    showDrillDown(
+                        `${person[CX_NAME]}`,
+                        techRecords
+                    );
+                
+                });
 
                 const drillCells =
                     row.querySelectorAll(".drilldown");
