@@ -727,3 +727,32 @@ tbody td:nth-child(35){
     flex-shrink:0;
     cursor:pointer;
 }
+
+/* ==========================================
+   MODAL TOOLBAR
+========================================== */
+.modal-toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+/* ==========================================
+   DRILLDOWN EXPORT BUTTON
+========================================== */
+.drill-export-btn{
+    background:#1f4e79;
+    color:white;
+    border:none;
+    border-radius:6px;
+    padding:8px 14px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.drill-export-btn:hover{
+    background:#16395b;
+}
