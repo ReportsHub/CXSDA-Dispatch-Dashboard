@@ -253,7 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         
             <table class="${tableClass}">
-        ;
     
                 <thead>
                     <tr>
