@@ -904,9 +904,8 @@ document.addEventListener("DOMContentLoaded", () => {
         clusterFilter.value = "ALL";
         ageCheckboxes.forEach(cb => {cb.checked = false;});
         lastMileFilter.value = "ALL";
-    
         statusFilter.value = "DISPATCHED";
-    
+        updateAgeButton();
         buildTable();
     
     });
