@@ -258,7 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 </div>
                 
-                <table class="${tableClass}">
+                <div class="drill-table-container">
+
+                    <table class="${tableClass}">
     
                 <thead>
                     <tr>
@@ -317,6 +319,8 @@ document.addEventListener("DOMContentLoaded", () => {
         html += `
                 </tbody>
             </table>
+
+            </div>
         `;
     
         modalBody.innerHTML = html;
