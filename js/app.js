@@ -232,10 +232,10 @@ document.addEventListener("DOMContentLoaded", () => {
             : "tech-details";
         
         let html = `
+            <div class="modal-header-section">
             <h3 style="margin-bottom:10px;">
                 ${title}
             </h3>
-        
             <div class="modal-toolbar">
         
                 <p>
@@ -250,9 +250,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     Export Details
                 </button>
         
-            </div>
-        
-            <table class="${tableClass}">
+                </div>
+                
+                </div>
+                
+                <table class="${tableClass}">
     
                 <thead>
                     <tr>
