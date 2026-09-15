@@ -235,12 +235,25 @@ document.addEventListener("DOMContentLoaded", () => {
             <h3 style="margin-bottom:10px;">
                 ${title}
             </h3>
-            <p style="margin-bottom:15px;">
-                <strong>Total Records:</strong>
-                ${records.length}
-            </p>
-    
+        
+            <div class="modal-toolbar">
+        
+                <p>
+                    <strong>Total Records:</strong>
+                    ${records.length}
+                </p>
+        
+                <button
+                    id="drillExportBtn"
+                    class="drill-export-btn"
+                >
+                    Export Details
+                </button>
+        
+            </div>
+        
             <table class="${tableClass}">
+        ;
     
                 <thead>
                     <tr>
@@ -283,7 +296,39 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     
         modalBody.innerHTML = html;
+        
+        const drillExportBtn =
+            document.getElementById("drillExportBtn");
+        
+        drillExportBtn.addEventListener("click", () => {
+        
+            const csv = Papa.unparse(records);
+        
+            const blob = new Blob(
+                [csv],
+                { type: "text/csv;charset=utf-8;" }
+            );
+        
+            const link = document.createElement("a");
+        
+            const url =
+                URL.createObjectURL(blob);
+        
+            link.href = url;
+        
+            link.download =
+                `${title.replace(/[|]/g,"-")}.csv`;
+        
+            document.body.appendChild(link);
+        
+            link.click();
+        
+            document.body.removeChild(link);
+        
+        });
+        
         ageFilterGroup.classList.remove("show");
+        
         detailModal.style.display = "block";
     }
 
