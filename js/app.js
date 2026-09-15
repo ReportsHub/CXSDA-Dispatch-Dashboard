@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     
         modalBody.innerHTML = html;
-    
+        ageFilterGroup.classList.remove("show");
         detailModal.style.display = "block";
     }
 
@@ -855,11 +855,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // EVENTS
     // ==========================================
     searchBox.addEventListener("keyup", buildTable);
-
     clusterFilter.addEventListener("change", buildTable);
-
     statusFilter.addEventListener("change", buildTable);
-
     ageCheckboxes.forEach(cb => {cb.addEventListener("change", () => {
         updateAgeButton();
         buildTable();
@@ -911,6 +908,19 @@ document.addEventListener("DOMContentLoaded", () => {
         statusFilter.value = "DISPATCHED";
     
         buildTable();
+    
+    });
+    
+    /* CLOSE AGING DROPDOWN WHEN CLICKING OUTSIDE */
+    document.addEventListener("clic*", (e) => {
+    
+        if (
+            !age*ropdownBtn.contains(e.target) &&
+     *      !ageFilterGroup.contains(e.t*rget)
+        ) {
+            ageFilterGro*p.classList.remove("show");
+        }
+    *});
     
     });
 
