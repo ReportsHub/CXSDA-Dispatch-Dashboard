@@ -233,6 +233,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         let html = `
             <div class="modal-header-section">
+        
+                <h2 class="modal-title">
+                    Details
+                </h2>
             <h3 style="margin-bottom:10px;">
                 ${title}
             </h3>
