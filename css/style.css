@@ -513,8 +513,8 @@ tbody td:nth-child(35){
     background:#1f4e79;
     color:white;
     position:sticky;
-    top:0;
-    z-index:10;
+    top:95;
+    z-index:20;
 }
 
 .modal-content td,
@@ -814,4 +814,16 @@ tbody td:nth-child(35){
 .status-unhandled{
     background:#f4cccc;
     color:#c62828;
+}
+
+/* ==========================================
+   MODAL FIXED HEADER
+========================================== */
+.modal-header-section{
+    position:sticky;
+    top:0;
+    background:white;
+    z-index:30;
+    padding-bottom:10px;
+    border-bottom:1px solid #d9d9d9;
 }
