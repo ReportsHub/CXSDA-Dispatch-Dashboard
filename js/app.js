@@ -279,7 +279,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 <tr>
                     <td>${r["Work Order ID"] || ""}</td>
                     ${showCXName ? `<td>${r["CX_NAME"] || ""}</td>` : ""}
-                    <td>${r["F.STAT"] || ""}</td>
+                    <td> 
+                        <span class="
+                            status-badge
+                            ${
+                                (r["F.STAT"] || "") === "COMPLETED"
+                                    ? "status-completed"
+                                    : (r["F.STAT"] || "") === "HANDLED"
+                                    ? "status-handled"
+                                    : "status-unhandled"
+                            }
+                        ">
+                            ${r["F.STAT"] || ""}
+                        </span>
+                    </td>
                     <td>${r["E.AGE"] || ""}</td>
                     <td>${r["SO TYPE"] || ""}</td>
                     <td>${r["ACTIVITY"] || ""}</td>
