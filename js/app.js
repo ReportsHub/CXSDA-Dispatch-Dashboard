@@ -911,17 +911,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     });
     
-    /* CLOSE AGING DROPDOWN WHEN CLICKING OUTSIDE */
-    document.addEventListener("clic*", (e) => {
+   /* CLOSE AGING DROPDOWN WHEN CLICKING OUTSIDE */
+    document.addEventListener("click", (e) => {
     
         if (
-            !age*ropdownBtn.contains(e.target) &&
-     *      !ageFilterGroup.contains(e.t*rget)
+            !ageDropdownBtn.contains(e.target) &&
+            !ageFilterGroup.contains(e.target)
         ) {
-            ageFilterGro*p.classList.remove("show");
+            ageFilterGroup.classList.remove("show");
         }
-    *});
     
     });
-
-});
+    
+    });
