@@ -9,6 +9,12 @@
     font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html,
+body{
+    height:100%;
+    overflow:hidden;
+}
+
 body{
     background:#f4f6f9;
     color:#333;
@@ -107,32 +113,20 @@ body{
 /* ==========================================
    TABLE CONTAINER
 ========================================== */
-
-
 .table-container{
-
     height:calc(100vh - 135px);
-
     overflow:auto;
-
     background:white;
-
 }
-
-
 
 /* ==========================================
    TABLE
 ========================================== */
-
-
 table{
     border-collapse: collapse;
     width: max-content;
     min-width:2200px;
 }
-
-
 
 th,
 td{
@@ -149,34 +143,21 @@ td{
 
 }
 
-
-
 /* ==========================================
    HEADER ROW HEIGHT FIX
 ========================================== */
-
-
 thead th{
-
     height:34px;
-
     padding:0 10px;
-
     line-height:34px;
-
 }
-
-
 
 /* ==========================================
    STICKY HEADER
 ========================================== */
-
-
 thead{
     position:relative;
 }
-
 
 thead th{
 
