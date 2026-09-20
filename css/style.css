@@ -502,12 +502,14 @@ tbody td:nth-child(35){
 .modal-content th{
     border:1px solid #ccc;
     padding:8px;
+    font-size:13px;
     vertical-align:top;
 }
 
 .modal-content td{
     white-space:normal;
     word-break:keep-all;
+    font-size:13px;
     overflow-wrap:break-word;
 }
 
@@ -712,6 +714,8 @@ tbody td:nth-child(35){
 .technician-name,
 .cluster-name{
     cursor:pointer;
+    font-size:13px;
+    font-weight:500;
 }
 
 .technician-name:hover,
