@@ -524,55 +524,34 @@ tbody td:nth-child(35){
 /* WO ID */
 .tech-details th:nth-child(1),
 .tech-details td:nth-child(1){
-    width:8%;
+    width:25%;
 }
 
 /* STATUS */
 .tech-details th:nth-child(2),
 .tech-details td:nth-child(2){
-   width:8%;
+   width:20%;
    text-align:center;
 }
 
 /* E.AGE */
 .tech-details th:nth-child(3),
 .tech-details td:nth-child(3){
-    width:5%;
+    width:15%;
     text-align:center;
 }
 
 /* ACTIVITY */
 .tech-details th:nth-child(4),
 .tech-details td:nth-child(4){
-    width:6%;
+    width:15%;
     text-align:center;
 }
 
 /* LAST MILE */
 .tech-details th:nth-child(5),
 .tech-details td:nth-child(5){
-    width:8%;
-    text-align:center;
-}
-
-/* CUSTOMER NAME */
-.tech-details th:nth-child(6),
-.tech-details td:nth-child(6){
-    width:18%;
-    text-align:left;
-}
-
-/* CUSTOMER ADDRESS */
-.tech-details th:nth-child(7),
-.tech-details td:nth-child(7){
-    width:40%;
-    text-align:left;
-}
-
-/* ACCOUNT NUMBER */
-.tech-details th:nth-child(8),
-.tech-details td:nth-child(8){
-    width:15%;
+    width:25%;
     text-align:center;
 }
 
@@ -589,67 +568,42 @@ tbody td:nth-child(35){
 /* WO ID */
 .cluster-details th:nth-child(1),
 .cluster-details td:nth-child(1){
-    width:8%;
+    width:15%;
     text-align:center;
 }
 
 /* CX NAME */
 .cluster-details th:nth-child(2),
 .cluster-details td:nth-child(2){
-    width:16%;
+    width:35%;
     text-align:left;
 }
 
 /* STATUS */
 .cluster-details th:nth-child(3),
 .cluster-details td:nth-child(3){
-   width:8%;
+   width:15%;
    text-align:center;
 }
 
 /* E.AGE */
 .cluster-details th:nth-child(4),
 .cluster-details td:nth-child(4){
-    width:5%;
+    width:10%;
     text-align:center;
 }
 
 /* ACTIVITY */
 .cluster-details th:nth-child(5),
 .cluster-details td:nth-child(5){
-    width:6%;
+    width:10%;
     text-align:center;
 }
 
 /* LAST MILE */
 .cluster-details th:nth-child(6),
 .cluster-details td:nth-child(6){
-    width:7%;
-    text-align:center;
-}
-
-/* CUSTOMER NAME */
-.cluster-details th:nth-child(7),
-.cluster-details td:nth-child(7){
-    width:18%;
-    text-align:left;
-}
-
-/* CUSTOMER ADDRESS */
-.cluster-details th:nth-child(8),
-.cluster-details td:nth-child(8){
-    width:30%;
-    text-align:left;
-    overflow-wrap:break-word;
-    line-height:1.4;
-    white-space:normal;
-    word-break:normal;
-}
-
-/* ACCOUNT NUMBER */
-.cluster-details th:nth-child(9),
-.cluster-details td:nth-child(9){
-    width:10%;
+    width:15%;
     text-align:center;
 }
 
