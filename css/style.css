@@ -225,41 +225,27 @@ thead tr:nth-child(3) th{
 
 
 tbody td.first-col{
-
     position:sticky;
-
     left:0;
-
     z-index:10;
-
-    background:white;
-
+    background:#ffffff;
+    opacity:1;
 }
 
-
-
 /* Top-left corner */
-
 thead th.corner{
-
     position:sticky;
-
     top:0;
     left:0;
-
     z-index:1000;
-
-    background:#efe7c5;
-
+    background:#ffffff;
     min-width:220px;
     width:220px;
     max-width:220px;
-
     border-right:1px solid #cfcfcf;
     border-bottom:1px solid #cfcfcf;
+    opacity:1;
 }
-
-
 
 /* ==========================================
    HEADER COLORS
