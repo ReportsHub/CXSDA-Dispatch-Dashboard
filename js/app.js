@@ -265,16 +265,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <thead>
                     <tr>
                         <th>WO ID</th>
-                    
                         ${showCXName ? "<th>CX Name</th>" : ""}
-
                         <th>Status</th>
                         <th>E.Age</th>
-                        <th>Activity</th>
+                        <th>SO Type</th>
                         <th>Last Mile</th>
-                        <th>Customer Name</th>
-                        <th>Customer Address</th>
-                        <th>Account Number</th>
                     </tr>
                 </thead>
     
@@ -303,14 +298,12 @@ document.addEventListener("DOMContentLoaded", () => {
                                     ? "UNHANDLED"
                                     : (r["F.STAT"] || "")
                             }
+                            
                         </span>
                     </td>
                     <td>${r["E.AGE"] || ""}</td>
                     <td>${r["SO TYPE"] || ""}</td>
                     <td>${r["ACTIVITY"] || ""}</td>
-                    <td>${r["Customer Name"] || ""}</td>
-                    <td>${r["Address"] || ""}</td>
-                    <td>${r["Account Number"] || ""}</td>
                 </tr>
             `;
     
