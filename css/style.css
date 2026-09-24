@@ -418,7 +418,7 @@ tbody td:nth-child(30){
 
 /* Before UNHANDLED */
 tbody td:nth-child(44){
-    bord*r-left:4px solid #1f4e79;
+    border-left:4px solid #1f4e79;
 }
 
 /* ==========================================
