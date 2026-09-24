@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     let allData = [];
-
+    let ageBuckets = [];
     let CLUSTER = "";
     let CX_NAME = "";
 
@@ -47,69 +47,64 @@ document.addEventListener("DOMContentLoaded", () => {
     function getCounts(records){
 
         const result = {
-            NC: 0,
-            AO: 0,
-            IPTV: 0,
-            NWUP: 0,
-            RELOC: 0,
-            AS: 0,
-            WAR0: 0,
-            WAR1: 0,
-            WAR2: 0,
-            WAR3: 0,
-            WAR47: 0,
-            WAR815: 0,
-            WAR1630: 0,
-            WAR30PLUS: 0
+            NC:0,
+            AO:0,
+            IPTV:0,
+            NWUP:0,
+            RELOC:0,
+            AS:0,
+            WAR:{}
         };
-
+    
+        ageBuckets.forEach(age => {
+            result.WAR[age] = 0;
+        });
+    
         records.forEach(r => {
-
-            const soType = (r["SO TYPE"] || "").trim();
-            const age = (r["E.AGE"] || "").trim();
-
+    
+            const soType =
+                (r["SO TYPE"] || "").trim();
+    
+            const age =
+                (r["E.AGE"] || "").trim();
+    
             switch(soType){
-
+    
                 case "NC":
                     result.NC++;
                     break;
-
+    
                 case "A/O":
                     result.AO++;
                     break;
-
+    
                 case "IPTV":
                     result.IPTV++;
                     break;
-
+    
                 case "NWUP":
                     result.NWUP++;
                     break;
-
+    
                 case "RELOC":
                     result.RELOC++;
                     break;
-
+    
                 case "AS":
                     result.AS++;
                     break;
-
+    
                 case "WAR":
-
-                    if(age === "0 D") result.WAR0++;
-                    else if(age === "1 D") result.WAR1++;
-                    else if(age === "2 D") result.WAR2++;
-                    else if(age === "3 D") result.WAR3++;
-                    else if(age === "4-7 D") result.WAR47++;
-                    else if(age === "8-15 D") result.WAR815++;
-                    else if(age === "16-30 D") result.WAR1630++;
-                    else if(age === ">30 D") result.WAR30PLUS++;
-
+    
+                    if(result.WAR[age] !== undefined){
+                        result.WAR[age]++;
+                    }
+    
                     break;
             }
-
+    
         });
-
+    
         return result;
     }
 
@@ -125,6 +120,32 @@ document.addEventListener("DOMContentLoaded", () => {
         complete: function(results){
 
             allData = results.data.map(row => {
+
+                const ageOrder = [
+                    "0 D",
+                    "1 D",
+                    "2 D",
+                    "3 D",
+                    "4-7 D",
+                    "8-15 D",
+                    "16-30 D",
+                    ">30 D"
+                ];
+                
+                ageBuckets = [
+                    ...new Set(
+                        allData
+                            .filter(r => (r["SO TYPE"] || "").trim() === "WAR")
+                            .map(r => (r["E.AGE"] || "").trim())
+                            .filter(Boolean)
+                    )
+                ];
+                
+                ageBuckets.sort(
+                    (a,b) =>
+                        ageOrder.indexOf(a) -
+                        ageOrder.indexOf(b)
+                );
 
                 const cleaned = {};
 
@@ -361,6 +382,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getTotal(data){
     
+        let warTotal = 0;
+    
+        Object.values(data.WAR).forEach(v => {
+            warTotal += v;
+        });
+    
         return (
             data.NC +
             data.AO +
@@ -368,16 +395,8 @@ document.addEventListener("DOMContentLoaded", () => {
             data.NWUP +
             data.RELOC +
             data.AS +
-            data.WAR0 +
-            data.WAR1 +
-            data.WAR2 +
-            data.WAR3 +
-            data.WAR47 +
-            data.WAR815 +
-            data.WAR1630 +
-            data.WAR30PLUS
+            warTotal
         );
-    
     }
 
     function getSelectedAges(){
