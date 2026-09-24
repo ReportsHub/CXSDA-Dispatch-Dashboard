@@ -121,7 +121,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             allData = results.data.map(row => {
 
-                const ageOrder = [
+                const cleaned = {};
+
+                Object.keys(row).forEach(key => {
+                    cleaned[key.replace(/\uFEFF/g, "").trim()] = row[key];
+                });
+
+                return cleaned;
+            });
+
+            const ageOrder = [
                     "0 D",
                     "1 D",
                     "2 D",
@@ -146,15 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         ageOrder.indexOf(a) -
                         ageOrder.indexOf(b)
                 );
-
-                const cleaned = {};
-
-                Object.keys(row).forEach(key => {
-                    cleaned[key.replace(/\uFEFF/g, "").trim()] = row[key];
-                });
-
-                return cleaned;
-            });
 
             CLUSTER = "CLUSTER";
             CX_NAME = "CX_NAME";
