@@ -57,7 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
             WAR1: 0,
             WAR2: 0,
             WAR3: 0,
-            WAR47: 0
+            WAR47: 0,
+            WAR815: 0,
+            WAR1630: 0,
+            WAR30PLUS: 0
         };
 
         records.forEach(r => {
@@ -98,6 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     else if(age === "2 D") result.WAR2++;
                     else if(age === "3 D") result.WAR3++;
                     else if(age === "4-7 D") result.WAR47++;
+                    else if(age === "8-15 D") result.WAR815++;
+                    else if(age === "16-30 D") result.WAR1630++;
+                    else if(age === ">30 D") result.WAR30PLUS++;
 
                     break;
             }
@@ -366,7 +372,10 @@ document.addEventListener("DOMContentLoaded", () => {
             data.WAR1 +
             data.WAR2 +
             data.WAR3 +
-            data.WAR47
+            data.WAR47 +
+            data.WAR815 +
+            data.WAR1630 +
+            data.WAR30PLUS
         );
     
     }
@@ -649,6 +658,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ${createDrillCell(clusterDispatched.WAR2,"DISPATCHED","WAR","2 D")}
             ${createDrillCell(clusterDispatched.WAR3,"DISPATCHED","WAR","3 D")}
             ${createDrillCell(clusterDispatched.WAR47,"DISPATCHED","WAR","4-7 D")}
+            ${createDrillCell(clusterDispatched.WAR815,"DISPATCHED","WAR","8-15 D")}
+            ${createDrillCell(clusterDispatched.WAR1630,"DISPATCHED","WAR","16-30 D")}
+            ${createDrillCell(clusterDispatched.WAR30PLUS,"DISPATCHED","WAR",">30 D")}
             
             <!-- COMPLETED -->
             ${createDrillCell(clusterCompleted.NC,"COMPLETED","NC")}
@@ -663,6 +675,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ${createDrillCell(clusterCompleted.WAR2,"COMPLETED","WAR","2 D")}
             ${createDrillCell(clusterCompleted.WAR3,"COMPLETED","WAR","3 D")}
             ${createDrillCell(clusterCompleted.WAR47,"COMPLETED","WAR","4-7 D")}
+            ${createDrillCell(clusterCompleted.WAR815,"COMPLETED","WAR","8-15 D")}
+            ${createDrillCell(clusterCompleted.WAR1630,"COMPLETED","WAR","16-30 D")}
+            ${createDrillCell(clusterCompleted.WAR30PLUS,"COMPLETED","WAR",">30 D")}
             
             <!-- HANDLED -->
             ${createDrillCell(clusterHandled.NC,"HANDLED","NC")}
@@ -677,6 +692,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ${createDrillCell(clusterHandled.WAR2,"HANDLED","WAR","2 D")}
             ${createDrillCell(clusterHandled.WAR3,"HANDLED","WAR","3 D")}
             ${createDrillCell(clusterHandled.WAR47,"HANDLED","WAR","4-7 D")}
+            ${createDrillCell(clusterHandled.WAR815,"HANDLED","WAR","8-15 D")}
+            ${createDrillCell(clusterHandled.WAR1630,"HANDLED","WAR","16-30 D")}
+            ${createDrillCell(clusterHandled.WAR30PLUS,"HANDLED","WAR",">30 D")}
             
             <!-- UNHANDLED -->
             ${createDrillCell(clusterUnhandled.NC,"PENDING/UNHANDLED","NC")}
@@ -691,6 +709,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ${createDrillCell(clusterUnhandled.WAR2,"PENDING/UNHANDLED","WAR","2 D")}
             ${createDrillCell(clusterUnhandled.WAR3,"PENDING/UNHANDLED","WAR","3 D")}
             ${createDrillCell(clusterUnhandled.WAR47,"PENDING/UNHANDLED","WAR","4-7 D")}
+            ${createDrillCell(clusterUnhandled.WAR815,"PENDING/UNHANDLED","WAR","8-15 D")}
+            ${createDrillCell(clusterUnhandled.WAR1630,"PENDING/UNHANDLED","WAR","16-30 D")}
+            ${createDrillCell(clusterUnhandled.WAR30PLUS,"PENDING/UNHANDLED","WAR",">30 D")}
             `;
 
             tbody.appendChild(clusterRow);
@@ -829,6 +850,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${createDrillCell(dispatched.WAR2,"DISPATCHED","WAR","2 D")}
                 ${createDrillCell(dispatched.WAR3,"DISPATCHED","WAR","3 D")}
                 ${createDrillCell(dispatched.WAR47,"DISPATCHED","WAR","4-7 D")}
+                ${createDrillCell(dispatched.WAR815,"DISPATCHED","WAR","8-15 D")}
+                ${createDrillCell(dispatched.WAR1630,"DISPATCHED","WAR","16-30 D")}
+                ${createDrillCell(dispatched.WAR30PLUS,"DISPATCHED","WAR",">30 D")}
                 
                 <!-- COMPLETED -->
                 ${createDrillCell(completed.NC,"COMPLETED","NC")}
@@ -843,6 +867,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${createDrillCell(completed.WAR2,"COMPLETED","WAR","2 D")}
                 ${createDrillCell(completed.WAR3,"COMPLETED","WAR","3 D")}
                 ${createDrillCell(completed.WAR47,"COMPLETED","WAR","4-7 D")}
+                ${createDrillCell(completed.WAR815,"COMPLETED","WAR","8-15 D")}
+                ${createDrillCell(completed.WAR1630,"COMPLETED","WAR","16-30 D")}
+                ${createDrillCell(completed.WAR30PLUS,"COMPLETED","WAR",">30 D")}
                 
                 <!-- HANDLED -->
                 ${createDrillCell(handled.NC,"HANDLED","NC")}
@@ -857,6 +884,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${createDrillCell(handled.WAR2,"HANDLED","WAR","2 D")}
                 ${createDrillCell(handled.WAR3,"HANDLED","WAR","3 D")}
                 ${createDrillCell(handled.WAR47,"HANDLED","WAR","4-7 D")}
+                ${createDrillCell(handled.WAR815,"HANDLED","WAR","8-15 D")}
+                ${createDrillCell(handled.WAR1630,"HANDLED","WAR","16-30 D")}
+                ${createDrillCell(handled.WAR30PLUS,"HANDLED","WAR",">30 D")}
                 
                 <!-- UNHANDLED -->
                 ${createDrillCell(unhandled.NC,"PENDING/UNHANDLED","NC")}
@@ -871,6 +901,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${createDrillCell(unhandled.WAR2,"PENDING/UNHANDLED","WAR","2 D")}
                 ${createDrillCell(unhandled.WAR3,"PENDING/UNHANDLED","WAR","3 D")}
                 ${createDrillCell(unhandled.WAR47,"PENDING/UNHANDLED","WAR","4-7 D")}
+                ${createDrillCell(unhandled.WAR815,"PENDING/UNHANDLED","WAR","8-15 D")}
+                ${createDrillCell(unhandled.WAR1630,"PENDING/UNHANDLED","WAR","16-30 D")}
+                ${createDrillCell(unhandled.WAR30PLUS,"PENDING/UNHANDLED","WAR",">30 D")}
                 `;
 
                 tbody.appendChild(row);
